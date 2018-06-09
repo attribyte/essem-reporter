@@ -34,7 +34,7 @@ import com.google.common.collect.Maps;
 import com.google.common.io.BaseEncoding;
 import com.google.common.io.ByteStreams;
 import com.google.protobuf.ByteString;
-import org.attribyte.essem.ReportProtos;
+import org.attribyte.essem.proto.ReportProtos;
 import org.attribyte.essem.metrics.HDRReservoir;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

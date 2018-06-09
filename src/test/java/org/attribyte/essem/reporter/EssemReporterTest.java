@@ -20,7 +20,7 @@ import com.codahale.metrics.Histogram;
 import com.codahale.metrics.Meter;
 import com.codahale.metrics.MetricRegistry;
 import com.codahale.metrics.Timer;
-import org.attribyte.essem.ReportProtos;
+import org.attribyte.essem.proto.ReportProtos;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
