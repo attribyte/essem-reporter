@@ -36,11 +36,11 @@ public class EssemReporterTest {
    @Test
    public void testMeta() throws Exception {
       MetricRegistry registry = new MetricRegistry();
-      EssemReporter reporter = EssemReporter.newBuilder(new URI("http://127.0.0.1"), registry)
+      EssemReporter reporter = Proto2Reporter.newBuilder(new URI("http://127.0.0.1"), registry)
               .convertRatesTo(TimeUnit.MINUTES)
               .convertDurationsTo(TimeUnit.NANOSECONDS)
               .build();
-      ReportProtos.EssemReport report = reporter.buildReport(registry);
+      ReportProtos.EssemReport report = buildReport(reporter, registry);
       assertTrue(report.getTimestamp() > 0L);
       assertEquals("MINUTES", report.getRateUnit().toString());
       assertEquals("NANOS", report.getDurationUnit().toString());
@@ -52,8 +52,8 @@ public class EssemReporterTest {
       Counter counter = registry.counter("test-counter-0");
       counter.inc(314);
 
-      EssemReporter reporter = EssemReporter.newBuilder(new URI("http://127.0.0.1"), registry).build();
-      ReportProtos.EssemReport report = reporter.buildReport(registry);
+      EssemReporter reporter = Proto2Reporter.newBuilder(new URI("http://127.0.0.1"), registry).build();
+      ReportProtos.EssemReport report = buildReport(reporter, registry);
       assertEquals(1, report.getCounterCount());
       assertEquals("test-counter-0", report.getCounter(0).getName());
       assertEquals(314, report.getCounter(0).getCount());
@@ -64,12 +64,12 @@ public class EssemReporterTest {
       MetricRegistry registry = new MetricRegistry();
       registry.register("test-gauge-0", (Gauge<Integer>)() -> 314);
 
-      EssemReporter reporter = EssemReporter.newBuilder(new URI("http://127.0.0.1"), registry)
+      EssemReporter reporter = Proto2Reporter.newBuilder(new URI("http://127.0.0.1"), registry)
               .convertRatesTo(TimeUnit.MINUTES)
               .convertDurationsTo(TimeUnit.NANOSECONDS)
               .build();
 
-      ReportProtos.EssemReport report = reporter.buildReport(registry);
+      ReportProtos.EssemReport report = buildReport(reporter, registry);
       assertEquals(1, report.getGaugeCount());
       assertEquals("test-gauge-0", report.getGauge(0).getName());
       assertEquals(314, (int)report.getGauge(0).getValue());
@@ -81,8 +81,8 @@ public class EssemReporterTest {
       Meter meter = registry.meter("test-meter-0");
       meter.mark(314);
 
-      EssemReporter reporter = EssemReporter.newBuilder(new URI("http://127.0.0.1"), registry).build();
-      ReportProtos.EssemReport report = reporter.buildReport(registry);
+      EssemReporter reporter = Proto2Reporter.newBuilder(new URI("http://127.0.0.1"), registry).build();
+      ReportProtos.EssemReport report = buildReport(reporter, registry);
       assertEquals(1, report.getMeterCount());
       assertEquals("test-meter-0", report.getMeter(0).getName());
       assertEquals(314, report.getMeter(0).getCount());
@@ -96,8 +96,8 @@ public class EssemReporterTest {
       timer.update(500, TimeUnit.MILLISECONDS);
       timer.update(300, TimeUnit.MILLISECONDS);
 
-      EssemReporter reporter = EssemReporter.newBuilder(new URI("http://127.0.0.1"), registry).build();
-      ReportProtos.EssemReport report = reporter.buildReport(registry);
+      EssemReporter reporter = Proto2Reporter.newBuilder(new URI("http://127.0.0.1"), registry).build();
+      ReportProtos.EssemReport report = buildReport(reporter, registry);
       assertEquals(1, report.getTimerCount());
       assertEquals("test-timer-0", report.getTimer(0).getName());
       assertEquals(2, report.getTimer(0).getCount());
@@ -121,8 +121,8 @@ public class EssemReporterTest {
       histogram.update(500);
       histogram.update(300);
 
-      EssemReporter reporter = EssemReporter.newBuilder(new URI("http://127.0.0.1"), registry).build();
-      ReportProtos.EssemReport report = reporter.buildReport(registry);
+      EssemReporter reporter = Proto2Reporter.newBuilder(new URI("http://127.0.0.1"), registry).build();
+      ReportProtos.EssemReport report = buildReport(reporter, registry);
       assertEquals(1, report.getHistogramCount());
       assertEquals("test-histo-0", report.getHistogram(0).getName());
       assertEquals(2, report.getHistogram(0).getCount());
@@ -136,5 +136,18 @@ public class EssemReporterTest {
       assertEquals(500, (int)report.getHistogram(0).getPercentile98());
       assertEquals(500, (int)report.getHistogram(0).getPercentile99());
       assertEquals(500, (int)report.getHistogram(0).getPercentile999());
+   }
+
+   /**
+    * Builds a report for a specified registry.
+    * @param registry The registry.
+    * @return The report.
+    */
+   ReportProtos.EssemReport buildReport(final EssemReporter reporter, final MetricRegistry registry) {
+      return ((Proto2Reporter)reporter).buildReport(registry.getGauges(),
+              registry.getCounters(),
+              registry.getHistograms(),
+              registry.getMeters(),
+              registry.getTimers());
    }
 }

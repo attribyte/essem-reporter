@@ -2,42 +2,63 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-    <repositories>
-        <repository>
-            <id>snapshots</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-            <snapshots>
-                <enabled>true</enabled>
-                <updatePolicy>interval:60</updatePolicy>
-            </snapshots>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
-        </repository>
-    </repositories>
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.attribyte</groupId>
-    <artifactId>essem-reporter-protoc3</artifactId>
+    <groupId>org.attribyte</groupId>
+    <artifactId>essem-reporter-base</artifactId>
     <version>1.1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <name>Essem reporter for Protocol Buffers v3</name>
+    <name>Essem protobuf model base</name>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+    <developers>
+        <developer>
+            <name>Matt Hamer</name>
+            <email>matt@attribyte.com</email>
+            <organization>Attribyte, LLC</organization>
+            <organizationUrl>https://attribyte.com/</organizationUrl>
+        </developer>
+    </developers>
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
+    <profiles>
+        <profile>
+            <id>sign</id>
+            <activation>
+                <property>
+                    <!-- -Drelease=true  -->
+                    <name>release</name>
+                    <value>true</value>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>1.5</version>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
     <dependencies>
         <dependency>
             <groupId>org.attribyte</groupId>
             <artifactId>essem-metrics</artifactId>
-            <version>1.1.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>org.attribyte</groupId>
-            <artifactId>essem-protoc3</artifactId>
-            <version>1.1.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>org.attribyte</groupId>
-            <artifactId>essem-reporter-base</artifactId>
             <version>1.1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>

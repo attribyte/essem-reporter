@@ -28,10 +28,11 @@
         Essem metrics reporting and custom metrics
     </description>
     <modules>
-       <module>essem-metrics</module>
-       <module>essem-protoc2</module>
-       <module>essem-protoc3</module>
-       <module>essem-reporter-protoc2</module>
-       <module>essem-reporter-protoc3</module>
+        <module>essem-metrics</module>
+        <module>essem-protoc2</module>
+        <module>essem-protoc3</module>
+        <module>essem-reporter-base</module>
+        <module>essem-reporter-protoc2</module>
+        <module>essem-reporter-protoc3</module>
     </modules>
 </project>
