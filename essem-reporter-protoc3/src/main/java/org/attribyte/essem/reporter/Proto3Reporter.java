@@ -36,6 +36,7 @@ import java.nio.ByteBuffer;
 import java.util.Map;
 import java.util.SortedMap;
 import java.util.concurrent.TimeUnit;
+import java.util.function.Supplier;
 
 /**
  * A scheduled metric reporter that reports over HTTP(s) using the "essem"
@@ -62,13 +63,17 @@ public class Proto3Reporter extends EssemReporter implements MetricSet {
                   final String application,
                   final String host,
                   final String instance,
+                  final String role,
+                  final String description,
+                  final Supplier<String> statusSupplier,
                   final MetricFilter filter,
                   final TimeUnit rateUnit,
                   final TimeUnit durationUnit,
                   final boolean skipUnchangedMetrics,
                   final HdrReport hdrReport) {
-      super(uri, authValue, deflate, registry, clock, application, host, instance, filter,
-              rateUnit, durationUnit, skipUnchangedMetrics, hdrReport);
+      super(uri, authValue, deflate, registry, clock, application, host, instance,
+              role, description, statusSupplier,
+              filter, rateUnit, durationUnit, skipUnchangedMetrics, hdrReport);
    }
 
    private ReportProtos.EssemReport buildReport(SortedMap<String, Gauge> gauges,
@@ -84,6 +89,14 @@ public class Proto3Reporter extends EssemReporter implements MetricSet {
       if(application != null) builder.setApplication(application);
       if(host != null) builder.setHost(host);
       if(instance != null) builder.setInstance(instance);
+      if(role != null) builder.setRole(role);
+      if(description != null) builder.setDescription(description);
+      if(statusSupplier != null) {
+         String status = statusSupplier.get();
+         if(status != null) {
+            builder.setStatus(status);
+         }
+      }
 
       lastMetricCount.set(gauges.size() + counters.size() + histograms.size() + meters.size() + timers.size());
 

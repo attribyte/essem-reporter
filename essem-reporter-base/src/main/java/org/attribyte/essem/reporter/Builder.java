@@ -8,6 +8,7 @@ import com.google.common.io.BaseEncoding;
 
 import java.net.URI;
 import java.util.concurrent.TimeUnit;
+import java.util.function.Supplier;
 
 public abstract class Builder {
 
@@ -65,6 +66,38 @@ public abstract class Builder {
     */
    public Builder forInstance(final String instance) {
       this.instance = instance;
+      return this;
+   }
+
+   /**
+    * Sets a role.
+    * @param role The role name.
+    * @return A self-reference.
+    */
+   public Builder withRole(final String role) {
+      this.role = role;
+      return this;
+   }
+
+   /**
+    * Sets the description.
+    * @param description The description.
+    * @return A self-reference.
+    */
+   public Builder withDescription(final String description) {
+      this.description = description;
+      return this;
+   }
+
+   /**
+    * Sets a supplier for status
+    * @param statusSupplier The status supplier.
+    * @return A self-reference.
+    */
+   public Builder withStatus(final Supplier<String> statusSupplier) {
+      if(statusSupplier != null) {
+         this.statusSupplier = statusSupplier;
+      }
       return this;
    }
 
@@ -168,6 +201,10 @@ public abstract class Builder {
    protected String application;
    protected String host;
    protected String instance;
+   protected String role;
+   protected String description;
+   protected Supplier<String> statusSupplier = () -> null;
+
    protected boolean deflate;
    protected TimeUnit rateUnit;
    protected TimeUnit durationUnit;

@@ -31,6 +31,7 @@ import java.net.URL;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.function.Supplier;
 import java.util.zip.Deflater;
 import java.util.zip.DeflaterOutputStream;
 
@@ -65,6 +66,9 @@ public abstract class EssemReporter extends ScheduledReporter implements MetricS
                            final String application,
                            final String host,
                            final String instance,
+                           final String role,
+                           final String description,
+                           final Supplier<String> statusSupplier,
                            final MetricFilter filter,
                            final TimeUnit rateUnit,
                            final TimeUnit durationUnit,
@@ -78,6 +82,9 @@ public abstract class EssemReporter extends ScheduledReporter implements MetricS
       this.application = application;
       this.host = host;
       this.instance = instance;
+      this.role = role;
+      this.description = description;
+      this.statusSupplier = statusSupplier;
       this.rateUnit = rateUnit;
       this.durationUnit = durationUnit;
       this.lastReportedCount = skipUnchangedMetrics ? Maps.newConcurrentMap() : null;
@@ -196,6 +203,9 @@ public abstract class EssemReporter extends ScheduledReporter implements MetricS
    protected final String application;
    protected final String host;
    protected final String instance;
+   protected String role;
+   protected String description;
+   protected Supplier<String> statusSupplier;
    protected final Clock clock;
    protected final URI uri;
    protected final TimeUnit rateUnit;

@@ -18,7 +18,7 @@ class Proto3Builder extends Builder {
    @Override
    public EssemReporter build() {
       return new Proto3Reporter(uri, authValue, deflate,
-              registry, clock, application, host, instance, filter, rateUnit, durationUnit,
+              registry, clock, application, host, instance, role, description, statusSupplier, filter, rateUnit, durationUnit,
               skipUnchangedMetrics, hdrReport);
    }
 }
