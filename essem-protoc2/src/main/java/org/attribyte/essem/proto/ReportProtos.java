@@ -200,6 +200,48 @@ public final class ReportProtos {
      */
     com.google.protobuf.ByteString
         getInstanceBytes();
+
+    /**
+     * <code>optional string role = 12;</code>
+     */
+    boolean hasRole();
+    /**
+     * <code>optional string role = 12;</code>
+     */
+    java.lang.String getRole();
+    /**
+     * <code>optional string role = 12;</code>
+     */
+    com.google.protobuf.ByteString
+        getRoleBytes();
+
+    /**
+     * <code>optional string status = 13;</code>
+     */
+    boolean hasStatus();
+    /**
+     * <code>optional string status = 13;</code>
+     */
+    java.lang.String getStatus();
+    /**
+     * <code>optional string status = 13;</code>
+     */
+    com.google.protobuf.ByteString
+        getStatusBytes();
+
+    /**
+     * <code>optional string description = 14;</code>
+     */
+    boolean hasDescription();
+    /**
+     * <code>optional string description = 14;</code>
+     */
+    java.lang.String getDescription();
+    /**
+     * <code>optional string description = 14;</code>
+     */
+    com.google.protobuf.ByteString
+        getDescriptionBytes();
   }
   /**
    * Protobuf type {@code org.attribyte.essem.proto.EssemReport}
@@ -338,6 +380,24 @@ public final class ReportProtos {
               instance_ = bs;
               break;
             }
+            case 98: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000040;
+              role_ = bs;
+              break;
+            }
+            case 106: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000080;
+              status_ = bs;
+              break;
+            }
+            case 114: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000100;
+              description_ = bs;
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -398,35 +458,43 @@ public final class ReportProtos {
     public enum TimeUnit
         implements com.google.protobuf.ProtocolMessageEnum {
       /**
+       * <code>UNKNOWN = 0;</code>
+       */
+      UNKNOWN(0, 0),
+      /**
        * <code>NANOS = 1;</code>
        */
-      NANOS(0, 1),
+      NANOS(1, 1),
       /**
        * <code>MICROS = 2;</code>
        */
-      MICROS(1, 2),
+      MICROS(2, 2),
       /**
        * <code>MILLIS = 3;</code>
        */
-      MILLIS(2, 3),
+      MILLIS(3, 3),
       /**
        * <code>SECONDS = 4;</code>
        */
-      SECONDS(3, 4),
+      SECONDS(4, 4),
       /**
        * <code>MINUTES = 5;</code>
        */
-      MINUTES(4, 5),
+      MINUTES(5, 5),
       /**
        * <code>HOURS = 6;</code>
        */
-      HOURS(5, 6),
+      HOURS(6, 6),
       /**
        * <code>DAYS = 7;</code>
        */
-      DAYS(6, 7),
+      DAYS(7, 7),
       ;
 
+      /**
+       * <code>UNKNOWN = 0;</code>
+       */
+      public static final int UNKNOWN_VALUE = 0;
       /**
        * <code>NANOS = 1;</code>
        */
@@ -461,6 +529,7 @@ public final class ReportProtos {
 
       public static TimeUnit valueOf(int value) {
         switch (value) {
+          case 0: return UNKNOWN;
           case 1: return NANOS;
           case 2: return MICROS;
           case 3: return MILLIS;
@@ -6139,6 +6208,132 @@ public final class ReportProtos {
       }
     }
 
+    public static final int ROLE_FIELD_NUMBER = 12;
+    private java.lang.Object role_;
+    /**
+     * <code>optional string role = 12;</code>
+     */
+    public boolean hasRole() {
+      return ((bitField0_ & 0x00000040) == 0x00000040);
+    }
+    /**
+     * <code>optional string role = 12;</code>
+     */
+    public java.lang.String getRole() {
+      java.lang.Object ref = role_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          role_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string role = 12;</code>
+     */
+    public com.google.protobuf.ByteString
+        getRoleBytes() {
+      java.lang.Object ref = role_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        role_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int STATUS_FIELD_NUMBER = 13;
+    private java.lang.Object status_;
+    /**
+     * <code>optional string status = 13;</code>
+     */
+    public boolean hasStatus() {
+      return ((bitField0_ & 0x00000080) == 0x00000080);
+    }
+    /**
+     * <code>optional string status = 13;</code>
+     */
+    public java.lang.String getStatus() {
+      java.lang.Object ref = status_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          status_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string status = 13;</code>
+     */
+    public com.google.protobuf.ByteString
+        getStatusBytes() {
+      java.lang.Object ref = status_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        status_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int DESCRIPTION_FIELD_NUMBER = 14;
+    private java.lang.Object description_;
+    /**
+     * <code>optional string description = 14;</code>
+     */
+    public boolean hasDescription() {
+      return ((bitField0_ & 0x00000100) == 0x00000100);
+    }
+    /**
+     * <code>optional string description = 14;</code>
+     */
+    public java.lang.String getDescription() {
+      java.lang.Object ref = description_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          description_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string description = 14;</code>
+     */
+    public com.google.protobuf.ByteString
+        getDescriptionBytes() {
+      java.lang.Object ref = description_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        description_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private void initFields() {
       meter_ = java.util.Collections.emptyList();
       timer_ = java.util.Collections.emptyList();
@@ -6146,11 +6341,14 @@ public final class ReportProtos {
       histogram_ = java.util.Collections.emptyList();
       gauge_ = java.util.Collections.emptyList();
       timestamp_ = 0L;
-      rateUnit_ = org.attribyte.essem.proto.ReportProtos.EssemReport.TimeUnit.NANOS;
-      durationUnit_ = org.attribyte.essem.proto.ReportProtos.EssemReport.TimeUnit.NANOS;
+      rateUnit_ = org.attribyte.essem.proto.ReportProtos.EssemReport.TimeUnit.UNKNOWN;
+      durationUnit_ = org.attribyte.essem.proto.ReportProtos.EssemReport.TimeUnit.UNKNOWN;
       application_ = "";
       host_ = "";
       instance_ = "";
+      role_ = "";
+      status_ = "";
+      description_ = "";
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -6197,6 +6395,15 @@ public final class ReportProtos {
       }
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         output.writeBytes(11, getInstanceBytes());
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        output.writeBytes(12, getRoleBytes());
+      }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        output.writeBytes(13, getStatusBytes());
+      }
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+        output.writeBytes(14, getDescriptionBytes());
       }
       getUnknownFields().writeTo(output);
     }
@@ -6250,6 +6457,18 @@ public final class ReportProtos {
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(11, getInstanceBytes());
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(12, getRoleBytes());
+      }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(13, getStatusBytes());
+      }
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(14, getDescriptionBytes());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -6405,9 +6624,9 @@ public final class ReportProtos {
         }
         timestamp_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000020);
-        rateUnit_ = org.attribyte.essem.proto.ReportProtos.EssemReport.TimeUnit.NANOS;
+        rateUnit_ = org.attribyte.essem.proto.ReportProtos.EssemReport.TimeUnit.UNKNOWN;
         bitField0_ = (bitField0_ & ~0x00000040);
-        durationUnit_ = org.attribyte.essem.proto.ReportProtos.EssemReport.TimeUnit.NANOS;
+        durationUnit_ = org.attribyte.essem.proto.ReportProtos.EssemReport.TimeUnit.UNKNOWN;
         bitField0_ = (bitField0_ & ~0x00000080);
         application_ = "";
         bitField0_ = (bitField0_ & ~0x00000100);
@@ -6415,6 +6634,12 @@ public final class ReportProtos {
         bitField0_ = (bitField0_ & ~0x00000200);
         instance_ = "";
         bitField0_ = (bitField0_ & ~0x00000400);
+        role_ = "";
+        bitField0_ = (bitField0_ & ~0x00000800);
+        status_ = "";
+        bitField0_ = (bitField0_ & ~0x00001000);
+        description_ = "";
+        bitField0_ = (bitField0_ & ~0x00002000);
         return this;
       }
 
@@ -6512,6 +6737,18 @@ public final class ReportProtos {
           to_bitField0_ |= 0x00000020;
         }
         result.instance_ = instance_;
+        if (((from_bitField0_ & 0x00000800) == 0x00000800)) {
+          to_bitField0_ |= 0x00000040;
+        }
+        result.role_ = role_;
+        if (((from_bitField0_ & 0x00001000) == 0x00001000)) {
+          to_bitField0_ |= 0x00000080;
+        }
+        result.status_ = status_;
+        if (((from_bitField0_ & 0x00002000) == 0x00002000)) {
+          to_bitField0_ |= 0x00000100;
+        }
+        result.description_ = description_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -6680,6 +6917,21 @@ public final class ReportProtos {
         if (other.hasInstance()) {
           bitField0_ |= 0x00000400;
           instance_ = other.instance_;
+          onChanged();
+        }
+        if (other.hasRole()) {
+          bitField0_ |= 0x00000800;
+          role_ = other.role_;
+          onChanged();
+        }
+        if (other.hasStatus()) {
+          bitField0_ |= 0x00001000;
+          status_ = other.status_;
+          onChanged();
+        }
+        if (other.hasDescription()) {
+          bitField0_ |= 0x00002000;
+          description_ = other.description_;
           onChanged();
         }
         this.mergeUnknownFields(other.getUnknownFields());
@@ -7941,7 +8193,7 @@ public final class ReportProtos {
         return this;
       }
 
-      private org.attribyte.essem.proto.ReportProtos.EssemReport.TimeUnit rateUnit_ = org.attribyte.essem.proto.ReportProtos.EssemReport.TimeUnit.NANOS;
+      private org.attribyte.essem.proto.ReportProtos.EssemReport.TimeUnit rateUnit_ = org.attribyte.essem.proto.ReportProtos.EssemReport.TimeUnit.UNKNOWN;
       /**
        * <code>optional .org.attribyte.essem.proto.EssemReport.TimeUnit rateUnit = 7;</code>
        */
@@ -7971,12 +8223,12 @@ public final class ReportProtos {
        */
       public Builder clearRateUnit() {
         bitField0_ = (bitField0_ & ~0x00000040);
-        rateUnit_ = org.attribyte.essem.proto.ReportProtos.EssemReport.TimeUnit.NANOS;
+        rateUnit_ = org.attribyte.essem.proto.ReportProtos.EssemReport.TimeUnit.UNKNOWN;
         onChanged();
         return this;
       }
 
-      private org.attribyte.essem.proto.ReportProtos.EssemReport.TimeUnit durationUnit_ = org.attribyte.essem.proto.ReportProtos.EssemReport.TimeUnit.NANOS;
+      private org.attribyte.essem.proto.ReportProtos.EssemReport.TimeUnit durationUnit_ = org.attribyte.essem.proto.ReportProtos.EssemReport.TimeUnit.UNKNOWN;
       /**
        * <code>optional .org.attribyte.essem.proto.EssemReport.TimeUnit durationUnit = 8;</code>
        */
@@ -8006,7 +8258,7 @@ public final class ReportProtos {
        */
       public Builder clearDurationUnit() {
         bitField0_ = (bitField0_ & ~0x00000080);
-        durationUnit_ = org.attribyte.essem.proto.ReportProtos.EssemReport.TimeUnit.NANOS;
+        durationUnit_ = org.attribyte.essem.proto.ReportProtos.EssemReport.TimeUnit.UNKNOWN;
         onChanged();
         return this;
       }
@@ -8239,6 +8491,234 @@ public final class ReportProtos {
         return this;
       }
 
+      private java.lang.Object role_ = "";
+      /**
+       * <code>optional string role = 12;</code>
+       */
+      public boolean hasRole() {
+        return ((bitField0_ & 0x00000800) == 0x00000800);
+      }
+      /**
+       * <code>optional string role = 12;</code>
+       */
+      public java.lang.String getRole() {
+        java.lang.Object ref = role_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            role_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string role = 12;</code>
+       */
+      public com.google.protobuf.ByteString
+          getRoleBytes() {
+        java.lang.Object ref = role_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          role_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string role = 12;</code>
+       */
+      public Builder setRole(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000800;
+        role_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string role = 12;</code>
+       */
+      public Builder clearRole() {
+        bitField0_ = (bitField0_ & ~0x00000800);
+        role_ = getDefaultInstance().getRole();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string role = 12;</code>
+       */
+      public Builder setRoleBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000800;
+        role_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object status_ = "";
+      /**
+       * <code>optional string status = 13;</code>
+       */
+      public boolean hasStatus() {
+        return ((bitField0_ & 0x00001000) == 0x00001000);
+      }
+      /**
+       * <code>optional string status = 13;</code>
+       */
+      public java.lang.String getStatus() {
+        java.lang.Object ref = status_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            status_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string status = 13;</code>
+       */
+      public com.google.protobuf.ByteString
+          getStatusBytes() {
+        java.lang.Object ref = status_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          status_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string status = 13;</code>
+       */
+      public Builder setStatus(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00001000;
+        status_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string status = 13;</code>
+       */
+      public Builder clearStatus() {
+        bitField0_ = (bitField0_ & ~0x00001000);
+        status_ = getDefaultInstance().getStatus();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string status = 13;</code>
+       */
+      public Builder setStatusBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00001000;
+        status_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object description_ = "";
+      /**
+       * <code>optional string description = 14;</code>
+       */
+      public boolean hasDescription() {
+        return ((bitField0_ & 0x00002000) == 0x00002000);
+      }
+      /**
+       * <code>optional string description = 14;</code>
+       */
+      public java.lang.String getDescription() {
+        java.lang.Object ref = description_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            description_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string description = 14;</code>
+       */
+      public com.google.protobuf.ByteString
+          getDescriptionBytes() {
+        java.lang.Object ref = description_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          description_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string description = 14;</code>
+       */
+      public Builder setDescription(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00002000;
+        description_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string description = 14;</code>
+       */
+      public Builder clearDescription() {
+        bitField0_ = (bitField0_ & ~0x00002000);
+        description_ = getDefaultInstance().getDescription();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string description = 14;</code>
+       */
+      public Builder setDescriptionBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00002000;
+        description_ = value;
+        onChanged();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:org.attribyte.essem.proto.EssemReport)
     }
 
@@ -8290,7 +8770,7 @@ public final class ReportProtos {
   static {
     java.lang.String[] descriptorData = {
       "\n\021EssemReport.proto\022\031org.attribyte.essem" +
-      ".proto\"\236\013\n\013EssemReport\022;\n\005meter\030\001 \003(\0132,." +
+      ".proto\"\336\013\n\013EssemReport\022;\n\005meter\030\001 \003(\0132,." +
       "org.attribyte.essem.proto.EssemReport.Me" +
       "ter\022;\n\005timer\030\002 \003(\0132,.org.attribyte.essem" +
       ".proto.EssemReport.Timer\022?\n\007counter\030\003 \003(" +
@@ -8303,30 +8783,32 @@ public final class ReportProtos {
       "roto.EssemReport.TimeUnit\022E\n\014durationUni" +
       "t\030\010 \001(\0162/.org.attribyte.essem.proto.Esse" +
       "mReport.TimeUnit\022\023\n\013application\030\t \001(\t\022\014\n" +
-      "\004host\030\n \001(\t\022\020\n\010instance\030\013 \001(\t\0325\n\005Gauge\022\014" +
-      "\n\004name\030\001 \001(\t\022\r\n\005value\030\002 \001(\001\022\017\n\007comment\030\003" +
-      " \001(\t\032&\n\007Counter\022\014\n\004name\030\001 \001(\t\022\r\n\005count\030\002" +
-      " \001(\004\032\200\001\n\005Meter\022\014\n\004name\030\001 \001(\t\022\025\n\roneMinut" +
-      "eRate\030\002 \001(\001\022\026\n\016fiveMinuteRate\030\003 \001(\001\022\031\n\021f" +
-      "ifteenMinuteRate\030\004 \001(\001\022\020\n\010meanRate\030\005 \001(\001",
-      "\022\r\n\005count\030\006 \001(\004\032\362\001\n\tHistogram\022\014\n\004name\030\001 " +
-      "\001(\t\022\r\n\005count\030\002 \001(\004\022\013\n\003max\030\003 \001(\001\022\014\n\004mean\030" +
-      "\004 \001(\001\022\013\n\003min\030\005 \001(\001\022\013\n\003std\030\006 \001(\001\022\016\n\006media" +
-      "n\030\007 \001(\001\022\024\n\014percentile75\030\010 \001(\001\022\024\n\014percent" +
-      "ile95\030\t \001(\001\022\024\n\014percentile98\030\n \001(\001\022\024\n\014per" +
-      "centile99\030\013 \001(\001\022\025\n\rpercentile999\030\014 \001(\001\022\024" +
-      "\n\014hdrHistogram\030\r \001(\014\032\312\002\n\005Timer\022\014\n\004name\030\001" +
-      " \001(\t\022\025\n\roneMinuteRate\030\002 \001(\001\022\026\n\016fiveMinut" +
-      "eRate\030\003 \001(\001\022\031\n\021fifteenMinuteRate\030\004 \001(\001\022\020" +
-      "\n\010meanRate\030\005 \001(\001\022\r\n\005count\030\006 \001(\004\022\013\n\003max\030\007",
-      " \001(\001\022\014\n\004mean\030\010 \001(\001\022\013\n\003min\030\t \001(\001\022\013\n\003std\030\n" +
-      " \001(\001\022\016\n\006median\030\013 \001(\001\022\024\n\014percentile75\030\014 \001" +
-      "(\001\022\024\n\014percentile95\030\r \001(\001\022\024\n\014percentile98" +
-      "\030\016 \001(\001\022\024\n\014percentile99\030\017 \001(\001\022\025\n\rpercenti" +
-      "le999\030\020 \001(\001\022\024\n\014hdrHistogram\030\021 \001(\014\"\\\n\010Tim" +
-      "eUnit\022\t\n\005NANOS\020\001\022\n\n\006MICROS\020\002\022\n\n\006MILLIS\020\003" +
-      "\022\013\n\007SECONDS\020\004\022\013\n\007MINUTES\020\005\022\t\n\005HOURS\020\006\022\010\n" +
-      "\004DAYS\020\007B\016B\014ReportProtos"
+      "\004host\030\n \001(\t\022\020\n\010instance\030\013 \001(\t\022\014\n\004role\030\014 " +
+      "\001(\t\022\016\n\006status\030\r \001(\t\022\023\n\013description\030\016 \001(\t" +
+      "\0325\n\005Gauge\022\014\n\004name\030\001 \001(\t\022\r\n\005value\030\002 \001(\001\022\017" +
+      "\n\007comment\030\003 \001(\t\032&\n\007Counter\022\014\n\004name\030\001 \001(\t" +
+      "\022\r\n\005count\030\002 \001(\004\032\200\001\n\005Meter\022\014\n\004name\030\001 \001(\t\022" +
+      "\025\n\roneMinuteRate\030\002 \001(\001\022\026\n\016fiveMinuteRate",
+      "\030\003 \001(\001\022\031\n\021fifteenMinuteRate\030\004 \001(\001\022\020\n\010mea" +
+      "nRate\030\005 \001(\001\022\r\n\005count\030\006 \001(\004\032\362\001\n\tHistogram" +
+      "\022\014\n\004name\030\001 \001(\t\022\r\n\005count\030\002 \001(\004\022\013\n\003max\030\003 \001" +
+      "(\001\022\014\n\004mean\030\004 \001(\001\022\013\n\003min\030\005 \001(\001\022\013\n\003std\030\006 \001" +
+      "(\001\022\016\n\006median\030\007 \001(\001\022\024\n\014percentile75\030\010 \001(\001" +
+      "\022\024\n\014percentile95\030\t \001(\001\022\024\n\014percentile98\030\n" +
+      " \001(\001\022\024\n\014percentile99\030\013 \001(\001\022\025\n\rpercentile" +
+      "999\030\014 \001(\001\022\024\n\014hdrHistogram\030\r \001(\014\032\312\002\n\005Time" +
+      "r\022\014\n\004name\030\001 \001(\t\022\025\n\roneMinuteRate\030\002 \001(\001\022\026" +
+      "\n\016fiveMinuteRate\030\003 \001(\001\022\031\n\021fifteenMinuteR",
+      "ate\030\004 \001(\001\022\020\n\010meanRate\030\005 \001(\001\022\r\n\005count\030\006 \001" +
+      "(\004\022\013\n\003max\030\007 \001(\001\022\014\n\004mean\030\010 \001(\001\022\013\n\003min\030\t \001" +
+      "(\001\022\013\n\003std\030\n \001(\001\022\016\n\006median\030\013 \001(\001\022\024\n\014perce" +
+      "ntile75\030\014 \001(\001\022\024\n\014percentile95\030\r \001(\001\022\024\n\014p" +
+      "ercentile98\030\016 \001(\001\022\024\n\014percentile99\030\017 \001(\001\022" +
+      "\025\n\rpercentile999\030\020 \001(\001\022\024\n\014hdrHistogram\030\021" +
+      " \001(\014\"i\n\010TimeUnit\022\013\n\007UNKNOWN\020\000\022\t\n\005NANOS\020\001" +
+      "\022\n\n\006MICROS\020\002\022\n\n\006MILLIS\020\003\022\013\n\007SECONDS\020\004\022\013\n" +
+      "\007MINUTES\020\005\022\t\n\005HOURS\020\006\022\010\n\004DAYS\020\007B\016B\014Repor" +
+      "tProtos"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -8345,7 +8827,7 @@ public final class ReportProtos {
     internal_static_org_attribyte_essem_proto_EssemReport_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_org_attribyte_essem_proto_EssemReport_descriptor,
-        new java.lang.String[] { "Meter", "Timer", "Counter", "Histogram", "Gauge", "Timestamp", "RateUnit", "DurationUnit", "Application", "Host", "Instance", });
+        new java.lang.String[] { "Meter", "Timer", "Counter", "Histogram", "Gauge", "Timestamp", "RateUnit", "DurationUnit", "Application", "Host", "Instance", "Role", "Status", "Description", });
     internal_static_org_attribyte_essem_proto_EssemReport_Gauge_descriptor =
       internal_static_org_attribyte_essem_proto_EssemReport_descriptor.getNestedTypes().get(0);
     internal_static_org_attribyte_essem_proto_EssemReport_Gauge_fieldAccessorTable = new

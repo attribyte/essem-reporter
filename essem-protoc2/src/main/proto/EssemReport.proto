@@ -21,6 +21,7 @@ option java_outer_classname = "ReportProtos";
 message EssemReport {
 
    enum TimeUnit {
+     UNKNOWN = 0;
      NANOS = 1;
      MICROS = 2;
      MILLIS = 3;
@@ -97,4 +98,7 @@ message EssemReport {
    optional string application = 9;
    optional string host = 10;
    optional string instance = 11;
+   optional string role = 12;
+   optional string status = 13;
+   optional string description = 14;
 }

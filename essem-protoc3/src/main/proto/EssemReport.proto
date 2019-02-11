@@ -100,4 +100,7 @@ message EssemReport {
    string application = 9;
    string host = 10;
    string instance = 11;
+   string role = 12;
+   string status = 13;
+   string description = 14;
 }
