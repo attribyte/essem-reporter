@@ -233,7 +233,7 @@ public class Proto2Reporter extends EssemReporter implements MetricSet {
          } else {
             LOGGER.debug("EssemReporter: Reported (" + responseCode + ")");
          }
-      } catch(IOException ioe) {
+      } catch(Throwable ioe) {
          ioe.printStackTrace();
          LOGGER.warn("Unable to report to Essem", ioe);
          sendErrors.mark();

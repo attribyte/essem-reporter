@@ -26,7 +26,7 @@ import com.codahale.metrics.MetricRegistry;
 import com.codahale.metrics.MetricSet;
 import com.codahale.metrics.Snapshot;
 import com.google.protobuf.ByteString;
-import org.attribyte.essem.proto.ReportProtos;
+import org.attribyte.essem.proto3.ReportProtos;
 import org.attribyte.essem.metrics.HDRReservoir;
 
 import java.io.IOException;
