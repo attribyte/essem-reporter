@@ -248,7 +248,7 @@ public abstract class EssemReporter extends ScheduledReporter implements MetricS
               .add("rateUnit", rateUnit)
               .add("durationUnit", durationUnit)
               .add("deflate", deflate)
-              .add("skippedUnchanged", skippedUnchanged)
+              .add("skippedUnchanged", lastReportedCount != null)
               .add("hdrReport", hdrReport)
               .toString();
    }
