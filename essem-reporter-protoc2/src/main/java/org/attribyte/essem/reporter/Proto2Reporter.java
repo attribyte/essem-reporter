@@ -25,11 +25,11 @@ import com.codahale.metrics.MetricRegistry;
 import com.codahale.metrics.MetricSet;
 import com.codahale.metrics.Snapshot;
 import com.codahale.metrics.Timer;
+import com.google.common.base.Strings;
 import com.google.protobuf.ByteString;
 import org.attribyte.essem.metrics.HDRReservoir;
 import org.attribyte.essem.proto.ReportProtos;
 
-import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.ByteBuffer;
@@ -64,7 +64,8 @@ public class Proto2Reporter extends EssemReporter implements MetricSet {
     * @throws IllegalArgumentException if a property is invalid.
     * @throws URISyntaxException if the report URI is invalid.
     */
-   public static Builder newBuilder(final Properties props, final MetricRegistry registry) throws IllegalArgumentException, URISyntaxException {
+   public static Builder newBuilder(final Properties props, final MetricRegistry registry)
+           throws IllegalArgumentException, URISyntaxException {
       return new Proto2Builder(props, registry);
    }
 
@@ -89,21 +90,30 @@ public class Proto2Reporter extends EssemReporter implements MetricSet {
               filter, rateUnit, durationUnit, skipUnchangedMetrics, hdrReport);
    }
 
-   ReportProtos.EssemReport buildReport(SortedMap<String, Gauge> gauges,
-                                        SortedMap<String, Counter> counters,
-                                        SortedMap<String, Histogram> histograms,
-                                        SortedMap<String, Meter> meters,
-                                        SortedMap<String, Timer> timers) {
+   /**
+    * Builds a report from various types of metrics.
+    * @param gauges A sorted map of gauges.
+    * @param counters A sorted map of counters.
+    * @param histograms A sorted map of histograms.
+    * @param meters A sorted map of meters.
+    * @param timers A sorted map of timers.
+    * @return The report.
+    */
+   public ReportProtos.EssemReport buildReport(SortedMap<String, Gauge> gauges,
+                                               SortedMap<String, Counter> counters,
+                                               SortedMap<String, Histogram> histograms,
+                                               SortedMap<String, Meter> meters,
+                                               SortedMap<String, Timer> timers) {
 
       ReportProtos.EssemReport.Builder builder = ReportProtos.EssemReport.newBuilder();
       builder.setTimestamp(clock.getTime());
       builder.setDurationUnit(toProto(durationUnit));
       builder.setRateUnit(toProto(rateUnit));
-      if(application != null) builder.setApplication(application);
-      if(host != null) builder.setHost(host);
-      if(instance != null) builder.setInstance(instance);
-      if(role != null) builder.setRole(role);
-      if(description != null) builder.setDescription(description);
+      if(!Strings.isNullOrEmpty(application)) builder.setApplication(application);
+      if(!Strings.isNullOrEmpty(host)) builder.setHost(host);
+      if(!Strings.isNullOrEmpty(instance)) builder.setInstance(instance);
+      if(!Strings.isNullOrEmpty(role)) builder.setRole(role);
+      if(!Strings.isNullOrEmpty(description)) builder.setDescription(description);
       if(statusSupplier != null) {
          String status = statusSupplier.get();
          if(status != null) {

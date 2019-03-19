@@ -14,7 +14,6 @@ import java.util.function.Supplier;
 
 public abstract class Builder {
 
-
    /**
     * The target URI property name ('{@value}').
     */
@@ -105,9 +104,11 @@ public abstract class Builder {
     * Determine if properties are valid.
     * @param props The properties.
     * @throws IllegalArgumentException if any properties are invalid.
+    * @throws URISyntaxException if report URI is invalid.
     * @return The input properties.
     */
-   public static Properties validateProperties(final Properties props) throws IllegalArgumentException, URISyntaxException {
+   public static Properties validateProperties(final Properties props)
+           throws IllegalArgumentException, URISyntaxException {
 
       if(!props.containsKey(URI_PROPERTY)) {
          throw new IllegalArgumentException("A 'uri' is required");
@@ -144,12 +145,32 @@ public abstract class Builder {
    }
 
    /**
-    * Adds values to the builder from properties.
-    * @param props The properties.
-    * @return The input properties.
+    * Creates a builder.
+    * @param uri The essem endpoint URI.
+    * @param registry The registry to report.
     */
-   private Properties addProperties(final Properties props) {
+   protected Builder(final URI uri, final MetricRegistry registry) {
+      this.uri = uri;
+      this.registry = registry;
+      this.clock = Clock.defaultClock();
+      this.rateUnit = TimeUnit.SECONDS;
+      this.durationUnit = TimeUnit.MILLISECONDS;
+      this.filter = MetricFilter.ALL;
+      this.application = null;
+      this.host = null;
+      this.instance = null;
+   }
 
+   /**
+    * Creates a builder from properties.
+    * @param props The properties.
+    * @param registry The registry to report.
+    * @throws IllegalArgumentException on invalid property.
+    * @throws URISyntaxException if the report URI is invalid.
+    */
+   protected Builder(final Properties props, final MetricRegistry registry)
+           throws IllegalArgumentException, URISyntaxException {
+      this(new URI(validateProperties(props).getProperty(URI_PROPERTY)), registry);
       String username = props.getProperty(USERNAME_PROPERTY, "").trim();
       String password = props.getProperty(PASSWORD_PROPERTY, "").trim();
       if(!username.isEmpty()) {
@@ -211,37 +232,6 @@ public abstract class Builder {
       if(!hdrReportStr.isEmpty()) {
          setHdrReport(EssemReporter.HdrReport.valueOf(hdrReportStr.toUpperCase()));
       }
-
-      return props;
-   }
-
-   /**
-    * Creates a builder.
-    * @param uri The essem endpoint URI.
-    * @param registry The registry to report.
-    */
-   protected Builder(final URI uri, final MetricRegistry registry) {
-      this.uri = uri;
-      this.registry = registry;
-      this.clock = Clock.defaultClock();
-      this.rateUnit = TimeUnit.SECONDS;
-      this.durationUnit = TimeUnit.MILLISECONDS;
-      this.filter = MetricFilter.ALL;
-      this.application = null;
-      this.host = null;
-      this.instance = null;
-   }
-
-   /**
-    * Creates a builder from properties.
-    * @param props The properties.
-    * @param registry The registry to report.
-    * @throws IllegalArgumentException on invalid property.
-    * @throws URISyntaxException if the report URI is invalid.
-    */
-   protected Builder(final Properties props, final MetricRegistry registry) throws IllegalArgumentException, URISyntaxException {
-      this(new URI(validateProperties(props).getProperty(URI_PROPERTY)), registry);
-      addProperties(props);
    }
 
    /**
