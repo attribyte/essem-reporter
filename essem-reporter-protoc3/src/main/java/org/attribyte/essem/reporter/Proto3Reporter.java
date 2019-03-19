@@ -32,8 +32,10 @@ import org.attribyte.essem.metrics.HDRReservoir;
 import java.io.IOException;
 import java.lang.SuppressWarnings;
 import java.net.URI;
+import java.net.URISyntaxException;
 import java.nio.ByteBuffer;
 import java.util.Map;
+import java.util.Properties;
 import java.util.SortedMap;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Supplier;
@@ -53,6 +55,18 @@ public class Proto3Reporter extends EssemReporter implements MetricSet {
     */
    public static Builder newBuilder(final URI uri, final MetricRegistry registry) {
       return new Proto3Builder(uri, registry);
+   }
+
+   /**
+    * Creates a builder from properties.
+    * @param props The properties.
+    * @param registry The registry.
+    * @return The builder.
+    * @throws IllegalArgumentException if a property is invalid.
+    * @throws URISyntaxException if the report URI is invalid.
+    */
+   public static Builder newBuilder(final Properties props, final MetricRegistry registry) throws IllegalArgumentException, URISyntaxException {
+      return new Proto3Builder(props, registry);
    }
 
    Proto3Reporter(final URI uri,

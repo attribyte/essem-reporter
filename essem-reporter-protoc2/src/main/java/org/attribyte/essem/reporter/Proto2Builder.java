@@ -3,6 +3,8 @@ package org.attribyte.essem.reporter;
 import com.codahale.metrics.MetricRegistry;
 
 import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.Properties;
 
 class Proto2Builder extends Builder {
 
@@ -13,6 +15,17 @@ class Proto2Builder extends Builder {
     */
    Proto2Builder(final URI uri, final MetricRegistry registry) {
       super(uri, registry);
+   }
+
+   /**
+    * Creates a builder.
+    * @param props The properties.
+    * @param registry The registry to report.
+    * @throws IllegalArgumentException if a property is invalid.
+    * @throws URISyntaxException if the report URI is invalid.
+    */
+   Proto2Builder(final Properties props, final MetricRegistry registry) throws IllegalArgumentException, URISyntaxException {
+      super(props, registry);
    }
 
    @Override
