@@ -202,23 +202,23 @@ public abstract class Builder {
          withDescription(role);
       }
 
-      String rateUnit = props.getProperty(RATE_UNIT_PROPERTY, "").trim();
+      String rateUnit = props.getProperty(RATE_UNIT_PROPERTY, "").trim().toUpperCase();
       if(!rateUnit.isEmpty()) {
-         if(!rateUnit.endsWith("s")) {
-            rateUnit = rateUnit + "s";
+         if(!rateUnit.endsWith("S")) {
+            rateUnit = rateUnit + "S";
          }
 
-         TimeUnit unit = TimeUnit.valueOf(rateUnit.toUpperCase());
+         TimeUnit unit = TimeUnit.valueOf(rateUnit);
          convertRatesTo(unit);
       }
 
-      String durationUnit = props.getProperty(DURATION_UNIT_PROPERTY, "").trim();
+      String durationUnit = props.getProperty(DURATION_UNIT_PROPERTY, "").trim().toUpperCase();
       if(!durationUnit.isEmpty()) {
-         if(!durationUnit.endsWith("s")) {
-            durationUnit = durationUnit + "s";
+         if(!durationUnit.toUpperCase().endsWith("S")) {
+            durationUnit = durationUnit + "S";
          }
 
-         TimeUnit unit = TimeUnit.valueOf(durationUnit.toUpperCase());
+         TimeUnit unit = TimeUnit.valueOf(durationUnit);
          convertDurationsTo(unit);
       }
 
