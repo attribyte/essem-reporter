@@ -393,6 +393,119 @@ public abstract class Builder {
    }
 
    /**
+    * @return The report URI or {@code null}.
+    */
+   public URI getURI() {
+      return uri;
+   }
+
+   /**
+    * @return The registry or {@code null}.
+    */
+   public MetricRegistry getRegistry() {
+      return registry;
+   }
+
+   /**
+    * @return The auth value or {@code null}.
+    */
+   public String getAuthValue() {
+      return authValue;
+   }
+
+   /**
+    * @return The clock or {@code null}.
+    */
+   public Clock getClock() {
+      return clock;
+   }
+
+   /**
+    * @return The application name or {@code null}.
+    */
+   public String getApplication() {
+      return application;
+   }
+
+   /**
+    * @return The host name or {@code null}.
+    */
+   public String getHost() {
+      return host;
+   }
+
+
+   /**
+    * @return The instance name or {@code null}.
+    */
+   public String getInstance() {
+      return instance;
+   }
+
+   /**
+    * @return The role name or {@code null}.
+    */
+   public String getRole() {
+      return role;
+   }
+
+   /**
+    * @return The description or {@code null}.
+    */
+   public String getDescription() {
+      return description;
+   }
+
+   /**
+    * @return The status supplier or {@code null}.
+    */
+   public Supplier<String> getStatusSupplier() {
+      return statusSupplier;
+   }
+
+   /**
+    * @return Is report deflate set?
+    */
+   public boolean isDeflate() {
+      return deflate;
+   }
+
+   /**
+    * @return The report rate unit.
+    */
+   public TimeUnit getRateUnit() {
+      return rateUnit;
+   }
+
+   /**
+    * @return The report duration unit.
+    */
+   public TimeUnit getDurationUnit() {
+      return durationUnit;
+   }
+
+   /**
+    * @return Is skip of unchanged metrics configured?
+    */
+   public boolean isSkipUnchangedMetrics() {
+      return skipUnchangedMetrics;
+   }
+
+   /**
+    * @return The metric filter or {@code null}.
+    */
+   public MetricFilter getFilter() {
+      return filter;
+   }
+
+   /**
+    * @return The HDR histogram report mode.
+    */
+   public EssemReporter.HdrReport getHdrReport() {
+      return hdrReport;
+   }
+
+   /**
     * Builds a reporter instance.
     * @return The reporter.
     */

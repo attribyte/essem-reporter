@@ -6,7 +6,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Properties;
 
-class Proto2Builder extends Builder {
+public class Proto2Builder extends Builder {
 
    /**
     * Creates a builder.

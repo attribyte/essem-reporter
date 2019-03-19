@@ -52,7 +52,7 @@ public class Proto2Reporter extends EssemReporter implements MetricSet {
     * @param registry the registry to report
     * @return The builder.
     */
-   public static Builder newBuilder(final URI uri, final MetricRegistry registry) {
+   public static Proto2Builder newBuilder(final URI uri, final MetricRegistry registry) {
       return new Proto2Builder(uri, registry);
    }
 
@@ -64,7 +64,7 @@ public class Proto2Reporter extends EssemReporter implements MetricSet {
     * @throws IllegalArgumentException if a property is invalid.
     * @throws URISyntaxException if the report URI is invalid.
     */
-   public static Builder newBuilder(final Properties props, final MetricRegistry registry)
+   public static Proto2Builder newBuilder(final Properties props, final MetricRegistry registry)
            throws IllegalArgumentException, URISyntaxException {
       return new Proto2Builder(props, registry);
    }

@@ -11,6 +11,7 @@ import com.codahale.metrics.MetricRegistry;
 import com.codahale.metrics.MetricSet;
 import com.codahale.metrics.ScheduledReporter;
 import com.codahale.metrics.Timer;
+import com.google.common.base.MoreObjects;
 import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
@@ -232,6 +233,24 @@ public abstract class EssemReporter extends ScheduledReporter implements MetricS
    @Override
    public Map<String, Metric> getMetrics() {
       return metrics;
+   }
+
+
+   @Override
+   public String toString() {
+      return MoreObjects.toStringHelper(this)
+              .add("application", application)
+              .add("host", host)
+              .add("instance", instance)
+              .add("role", role)
+              .add("description", description)
+              .add("uri", uri)
+              .add("rateUnit", rateUnit)
+              .add("durationUnit", durationUnit)
+              .add("deflate", deflate)
+              .add("skippedUnchanged", skippedUnchanged)
+              .add("hdrReport", hdrReport)
+              .toString();
    }
 
    /**
