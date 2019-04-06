@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Attribyte, LLC
+ * Copyright 2018 Attribyte, LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,6 +35,7 @@ import java.lang.SuppressWarnings;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.ByteBuffer;
+import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import java.util.SortedMap;
@@ -86,10 +87,11 @@ public class Proto3Reporter extends EssemReporter implements MetricSet {
                   final TimeUnit rateUnit,
                   final TimeUnit durationUnit,
                   final boolean skipUnchangedMetrics,
-                  final HdrReport hdrReport) {
+                  final HdrReport hdrReport,
+                  final Supplier<List<Alert>> alertSupplier) {
       super(uri, authValue, deflate, registry, clock, application, host, instance,
               role, description, statusSupplier,
-              filter, rateUnit, durationUnit, skipUnchangedMetrics, hdrReport);
+              filter, rateUnit, durationUnit, skipUnchangedMetrics, hdrReport, alertSupplier);
    }
 
    /**
@@ -116,10 +118,20 @@ public class Proto3Reporter extends EssemReporter implements MetricSet {
       if(!Strings.isNullOrEmpty(instance)) builder.setInstance(instance);
       if(!Strings.isNullOrEmpty(role)) builder.setRole(role);
       if(!Strings.isNullOrEmpty(description)) builder.setDescription(description);
+
       if(statusSupplier != null) {
          String status = statusSupplier.get();
          if(status != null) {
             builder.setStatus(status);
+         }
+      }
+
+      if(alertSupplier != null) {
+         List<Alert> alerts = alertSupplier.get();
+         if(alerts != null) {
+            alerts.forEach(alert -> {
+               builder.addAlert(toProto(alert));
+            });
          }
       }
 
@@ -295,5 +307,44 @@ public class Proto3Reporter extends EssemReporter implements MetricSet {
          case DAYS: return ReportProtos.EssemReport.TimeUnit.DAYS;
          default: throw new AssertionError();
       }
+   }
+
+   /**
+    * Converts an alert to a proto.
+    * @param alert The alert.
+    * @return The proto alert.
+    */
+   protected ReportProtos.EssemReport.Alert toProto(final Alert alert) {
+
+      ReportProtos.EssemReport.Alert.Builder builder = ReportProtos.EssemReport.Alert.newBuilder();
+      if(!Strings.isNullOrEmpty(alert.name)) {
+         builder.setName(alert.name);
+      }
+
+      if(!Strings.isNullOrEmpty(alert.message)) {
+         builder.setValue(alert.message);
+      }
+
+      if(alert.severity != null) {
+         switch(alert.severity) {
+            case INFO:
+               builder.setSeverity(ReportProtos.EssemReport.Alert.Severity.INFO);
+               break;
+            case WARN:
+               builder.setSeverity(ReportProtos.EssemReport.Alert.Severity.WARN);
+               break;
+            case ERROR:
+               builder.setSeverity(ReportProtos.EssemReport.Alert.Severity.ERROR);
+               break;
+            case FATAL:
+               builder.setSeverity(ReportProtos.EssemReport.Alert.Severity.FATAL);
+               break;
+            default:
+               builder.setSeverity(ReportProtos.EssemReport.Alert.Severity.UNKNOWN);
+               break;
+         }
+      }
+
+      return builder.build();
    }
 }

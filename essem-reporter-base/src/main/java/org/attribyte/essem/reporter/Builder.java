@@ -1,3 +1,21 @@
+/*
+ * Copyright 2018 Attribyte, LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ *
+ * You may obtain a copy of the License at
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
+ * either express or implied.
+ *
+ * See the License for the specific language governing permissions
+ * and limitations under the License.
+ */
+
 package org.attribyte.essem.reporter;
 
 import com.codahale.metrics.Clock;
@@ -8,6 +26,7 @@ import com.google.common.io.BaseEncoding;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Supplier;
@@ -307,6 +326,18 @@ public abstract class Builder {
    }
 
    /**
+    * Sets a supplier for alerts
+    * @param alertSupplier The alerts supplier.
+    * @return A self-reference.
+    */
+   public Builder withAlerts(final Supplier<List<Alert>> alertSupplier) {
+      if(alertSupplier != null) {
+         this.alertSupplier = alertSupplier;
+      }
+      return this;
+   }
+
+   /**
     * Configures the rate conversion. Default is seconds.
     * @param rateUnit The rate unit.
     * @return A self-reference.
@@ -522,6 +553,7 @@ public abstract class Builder {
    protected String role;
    protected String description;
    protected Supplier<String> statusSupplier = () -> null;
+   protected Supplier<List<Alert>> alertSupplier = () -> null;
 
    protected boolean deflate;
    protected TimeUnit rateUnit;

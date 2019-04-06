@@ -220,6 +220,30 @@ public final class ReportProtos {
      */
     com.google.protobuf.ByteString
         getDescriptionBytes();
+
+    /**
+     * <code>repeated .org.attribyte.essem.proto3.EssemReport.Alert alert = 15;</code>
+     */
+    java.util.List<org.attribyte.essem.proto3.ReportProtos.EssemReport.Alert> 
+        getAlertList();
+    /**
+     * <code>repeated .org.attribyte.essem.proto3.EssemReport.Alert alert = 15;</code>
+     */
+    org.attribyte.essem.proto3.ReportProtos.EssemReport.Alert getAlert(int index);
+    /**
+     * <code>repeated .org.attribyte.essem.proto3.EssemReport.Alert alert = 15;</code>
+     */
+    int getAlertCount();
+    /**
+     * <code>repeated .org.attribyte.essem.proto3.EssemReport.Alert alert = 15;</code>
+     */
+    java.util.List<? extends org.attribyte.essem.proto3.ReportProtos.EssemReport.AlertOrBuilder> 
+        getAlertOrBuilderList();
+    /**
+     * <code>repeated .org.attribyte.essem.proto3.EssemReport.Alert alert = 15;</code>
+     */
+    org.attribyte.essem.proto3.ReportProtos.EssemReport.AlertOrBuilder getAlertOrBuilder(
+        int index);
   }
   /**
    * Protobuf type {@code org.attribyte.essem.proto3.EssemReport}
@@ -248,6 +272,7 @@ public final class ReportProtos {
       role_ = "";
       status_ = "";
       description_ = "";
+      alert_ = java.util.Collections.emptyList();
     }
 
     @java.lang.Override
@@ -372,6 +397,15 @@ public final class ReportProtos {
               description_ = s;
               break;
             }
+            case 122: {
+              if (!((mutable_bitField0_ & 0x00004000) == 0x00004000)) {
+                alert_ = new java.util.ArrayList<org.attribyte.essem.proto3.ReportProtos.EssemReport.Alert>();
+                mutable_bitField0_ |= 0x00004000;
+              }
+              alert_.add(
+                  input.readMessage(org.attribyte.essem.proto3.ReportProtos.EssemReport.Alert.parser(), extensionRegistry));
+              break;
+            }
             default: {
               if (!parseUnknownFieldProto3(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -401,6 +435,9 @@ public final class ReportProtos {
         }
         if (((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
           gauge_ = java.util.Collections.unmodifiableList(gauge_);
+        }
+        if (((mutable_bitField0_ & 0x00004000) == 0x00004000)) {
+          alert_ = java.util.Collections.unmodifiableList(alert_);
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -5760,6 +5797,912 @@ public final class ReportProtos {
 
     }
 
+    public interface AlertOrBuilder extends
+        // @@protoc_insertion_point(interface_extends:org.attribyte.essem.proto3.EssemReport.Alert)
+        com.google.protobuf.MessageOrBuilder {
+
+      /**
+       * <code>string name = 1;</code>
+       */
+      java.lang.String getName();
+      /**
+       * <code>string name = 1;</code>
+       */
+      com.google.protobuf.ByteString
+          getNameBytes();
+
+      /**
+       * <code>.org.attribyte.essem.proto3.EssemReport.Alert.Severity severity = 2;</code>
+       */
+      int getSeverityValue();
+      /**
+       * <code>.org.attribyte.essem.proto3.EssemReport.Alert.Severity severity = 2;</code>
+       */
+      org.attribyte.essem.proto3.ReportProtos.EssemReport.Alert.Severity getSeverity();
+
+      /**
+       * <code>string value = 3;</code>
+       */
+      java.lang.String getValue();
+      /**
+       * <code>string value = 3;</code>
+       */
+      com.google.protobuf.ByteString
+          getValueBytes();
+    }
+    /**
+     * Protobuf type {@code org.attribyte.essem.proto3.EssemReport.Alert}
+     */
+    public  static final class Alert extends
+        com.google.protobuf.GeneratedMessageV3 implements
+        // @@protoc_insertion_point(message_implements:org.attribyte.essem.proto3.EssemReport.Alert)
+        AlertOrBuilder {
+    private static final long serialVersionUID = 0L;
+      // Use Alert.newBuilder() to construct.
+      private Alert(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+        super(builder);
+      }
+      private Alert() {
+        name_ = "";
+        severity_ = 0;
+        value_ = "";
+      }
+
+      @java.lang.Override
+      public final com.google.protobuf.UnknownFieldSet
+      getUnknownFields() {
+        return this.unknownFields;
+      }
+      private Alert(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        this();
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        int mutable_bitField0_ = 0;
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+            com.google.protobuf.UnknownFieldSet.newBuilder();
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                name_ = s;
+                break;
+              }
+              case 16: {
+                int rawValue = input.readEnum();
+
+                severity_ = rawValue;
+                break;
+              }
+              case 26: {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                value_ = s;
+                break;
+              }
+              default: {
+                if (!parseUnknownFieldProto3(
+                    input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
+            }
+          }
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(this);
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(
+              e).setUnfinishedMessage(this);
+        } finally {
+          this.unknownFields = unknownFields.build();
+          makeExtensionsImmutable();
+        }
+      }
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return org.attribyte.essem.proto3.ReportProtos.internal_static_org_attribyte_essem_proto3_EssemReport_Alert_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return org.attribyte.essem.proto3.ReportProtos.internal_static_org_attribyte_essem_proto3_EssemReport_Alert_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                org.attribyte.essem.proto3.ReportProtos.EssemReport.Alert.class, org.attribyte.essem.proto3.ReportProtos.EssemReport.Alert.Builder.class);
+      }
+
+      /**
+       * Protobuf enum {@code org.attribyte.essem.proto3.EssemReport.Alert.Severity}
+       */
+      public enum Severity
+          implements com.google.protobuf.ProtocolMessageEnum {
+        /**
+         * <code>UNKNOWN = 0;</code>
+         */
+        UNKNOWN(0),
+        /**
+         * <code>INFO = 1;</code>
+         */
+        INFO(1),
+        /**
+         * <code>WARN = 2;</code>
+         */
+        WARN(2),
+        /**
+         * <code>ERROR = 3;</code>
+         */
+        ERROR(3),
+        /**
+         * <code>FATAL = 4;</code>
+         */
+        FATAL(4),
+        UNRECOGNIZED(-1),
+        ;
+
+        /**
+         * <code>UNKNOWN = 0;</code>
+         */
+        public static final int UNKNOWN_VALUE = 0;
+        /**
+         * <code>INFO = 1;</code>
+         */
+        public static final int INFO_VALUE = 1;
+        /**
+         * <code>WARN = 2;</code>
+         */
+        public static final int WARN_VALUE = 2;
+        /**
+         * <code>ERROR = 3;</code>
+         */
+        public static final int ERROR_VALUE = 3;
+        /**
+         * <code>FATAL = 4;</code>
+         */
+        public static final int FATAL_VALUE = 4;
+
+
+        public final int getNumber() {
+          if (this == UNRECOGNIZED) {
+            throw new java.lang.IllegalArgumentException(
+                "Can't get the number of an unknown enum value.");
+          }
+          return value;
+        }
+
+        /**
+         * @deprecated Use {@link #forNumber(int)} instead.
+         */
+        @java.lang.Deprecated
+        public static Severity valueOf(int value) {
+          return forNumber(value);
+        }
+
+        public static Severity forNumber(int value) {
+          switch (value) {
+            case 0: return UNKNOWN;
+            case 1: return INFO;
+            case 2: return WARN;
+            case 3: return ERROR;
+            case 4: return FATAL;
+            default: return null;
+          }
+        }
+
+        public static com.google.protobuf.Internal.EnumLiteMap<Severity>
+            internalGetValueMap() {
+          return internalValueMap;
+        }
+        private static final com.google.protobuf.Internal.EnumLiteMap<
+            Severity> internalValueMap =
+              new com.google.protobuf.Internal.EnumLiteMap<Severity>() {
+                public Severity findValueByNumber(int number) {
+                  return Severity.forNumber(number);
+                }
+              };
+
+        public final com.google.protobuf.Descriptors.EnumValueDescriptor
+            getValueDescriptor() {
+          return getDescriptor().getValues().get(ordinal());
+        }
+        public final com.google.protobuf.Descriptors.EnumDescriptor
+            getDescriptorForType() {
+          return getDescriptor();
+        }
+        public static final com.google.protobuf.Descriptors.EnumDescriptor
+            getDescriptor() {
+          return org.attribyte.essem.proto3.ReportProtos.EssemReport.Alert.getDescriptor().getEnumTypes().get(0);
+        }
+
+        private static final Severity[] VALUES = values();
+
+        public static Severity valueOf(
+            com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+          if (desc.getType() != getDescriptor()) {
+            throw new java.lang.IllegalArgumentException(
+              "EnumValueDescriptor is not for this type.");
+          }
+          if (desc.getIndex() == -1) {
+            return UNRECOGNIZED;
+          }
+          return VALUES[desc.getIndex()];
+        }
+
+        private final int value;
+
+        private Severity(int value) {
+          this.value = value;
+        }
+
+        // @@protoc_insertion_point(enum_scope:org.attribyte.essem.proto3.EssemReport.Alert.Severity)
+      }
+
+      public static final int NAME_FIELD_NUMBER = 1;
+      private volatile java.lang.Object name_;
+      /**
+       * <code>string name = 1;</code>
+       */
+      public java.lang.String getName() {
+        java.lang.Object ref = name_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          name_ = s;
+          return s;
+        }
+      }
+      /**
+       * <code>string name = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getNameBytes() {
+        java.lang.Object ref = name_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          name_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      public static final int SEVERITY_FIELD_NUMBER = 2;
+      private int severity_;
+      /**
+       * <code>.org.attribyte.essem.proto3.EssemReport.Alert.Severity severity = 2;</code>
+       */
+      public int getSeverityValue() {
+        return severity_;
+      }
+      /**
+       * <code>.org.attribyte.essem.proto3.EssemReport.Alert.Severity severity = 2;</code>
+       */
+      public org.attribyte.essem.proto3.ReportProtos.EssemReport.Alert.Severity getSeverity() {
+        @SuppressWarnings("deprecation")
+        org.attribyte.essem.proto3.ReportProtos.EssemReport.Alert.Severity result = org.attribyte.essem.proto3.ReportProtos.EssemReport.Alert.Severity.valueOf(severity_);
+        return result == null ? org.attribyte.essem.proto3.ReportProtos.EssemReport.Alert.Severity.UNRECOGNIZED : result;
+      }
+
+      public static final int VALUE_FIELD_NUMBER = 3;
+      private volatile java.lang.Object value_;
+      /**
+       * <code>string value = 3;</code>
+       */
+      public java.lang.String getValue() {
+        java.lang.Object ref = value_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          value_ = s;
+          return s;
+        }
+      }
+      /**
+       * <code>string value = 3;</code>
+       */
+      public com.google.protobuf.ByteString
+          getValueBytes() {
+        java.lang.Object ref = value_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          value_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      private byte memoizedIsInitialized = -1;
+      @java.lang.Override
+      public final boolean isInitialized() {
+        byte isInitialized = memoizedIsInitialized;
+        if (isInitialized == 1) return true;
+        if (isInitialized == 0) return false;
+
+        memoizedIsInitialized = 1;
+        return true;
+      }
+
+      @java.lang.Override
+      public void writeTo(com.google.protobuf.CodedOutputStream output)
+                          throws java.io.IOException {
+        if (!getNameBytes().isEmpty()) {
+          com.google.protobuf.GeneratedMessageV3.writeString(output, 1, name_);
+        }
+        if (severity_ != org.attribyte.essem.proto3.ReportProtos.EssemReport.Alert.Severity.UNKNOWN.getNumber()) {
+          output.writeEnum(2, severity_);
+        }
+        if (!getValueBytes().isEmpty()) {
+          com.google.protobuf.GeneratedMessageV3.writeString(output, 3, value_);
+        }
+        unknownFields.writeTo(output);
+      }
+
+      @java.lang.Override
+      public int getSerializedSize() {
+        int size = memoizedSize;
+        if (size != -1) return size;
+
+        size = 0;
+        if (!getNameBytes().isEmpty()) {
+          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, name_);
+        }
+        if (severity_ != org.attribyte.essem.proto3.ReportProtos.EssemReport.Alert.Severity.UNKNOWN.getNumber()) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeEnumSize(2, severity_);
+        }
+        if (!getValueBytes().isEmpty()) {
+          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, value_);
+        }
+        size += unknownFields.getSerializedSize();
+        memoizedSize = size;
+        return size;
+      }
+
+      @java.lang.Override
+      public boolean equals(final java.lang.Object obj) {
+        if (obj == this) {
+         return true;
+        }
+        if (!(obj instanceof org.attribyte.essem.proto3.ReportProtos.EssemReport.Alert)) {
+          return super.equals(obj);
+        }
+        org.attribyte.essem.proto3.ReportProtos.EssemReport.Alert other = (org.attribyte.essem.proto3.ReportProtos.EssemReport.Alert) obj;
+
+        boolean result = true;
+        result = result && getName()
+            .equals(other.getName());
+        result = result && severity_ == other.severity_;
+        result = result && getValue()
+            .equals(other.getValue());
+        result = result && unknownFields.equals(other.unknownFields);
+        return result;
+      }
+
+      @java.lang.Override
+      public int hashCode() {
+        if (memoizedHashCode != 0) {
+          return memoizedHashCode;
+        }
+        int hash = 41;
+        hash = (19 * hash) + getDescriptor().hashCode();
+        hash = (37 * hash) + NAME_FIELD_NUMBER;
+        hash = (53 * hash) + getName().hashCode();
+        hash = (37 * hash) + SEVERITY_FIELD_NUMBER;
+        hash = (53 * hash) + severity_;
+        hash = (37 * hash) + VALUE_FIELD_NUMBER;
+        hash = (53 * hash) + getValue().hashCode();
+        hash = (29 * hash) + unknownFields.hashCode();
+        memoizedHashCode = hash;
+        return hash;
+      }
+
+      public static org.attribyte.essem.proto3.ReportProtos.EssemReport.Alert parseFrom(
+          java.nio.ByteBuffer data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static org.attribyte.essem.proto3.ReportProtos.EssemReport.Alert parseFrom(
+          java.nio.ByteBuffer data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static org.attribyte.essem.proto3.ReportProtos.EssemReport.Alert parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static org.attribyte.essem.proto3.ReportProtos.EssemReport.Alert parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static org.attribyte.essem.proto3.ReportProtos.EssemReport.Alert parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static org.attribyte.essem.proto3.ReportProtos.EssemReport.Alert parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static org.attribyte.essem.proto3.ReportProtos.EssemReport.Alert parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input);
+      }
+      public static org.attribyte.essem.proto3.ReportProtos.EssemReport.Alert parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static org.attribyte.essem.proto3.ReportProtos.EssemReport.Alert parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseDelimitedWithIOException(PARSER, input);
+      }
+      public static org.attribyte.essem.proto3.ReportProtos.EssemReport.Alert parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static org.attribyte.essem.proto3.ReportProtos.EssemReport.Alert parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input);
+      }
+      public static org.attribyte.essem.proto3.ReportProtos.EssemReport.Alert parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+
+      @java.lang.Override
+      public Builder newBuilderForType() { return newBuilder(); }
+      public static Builder newBuilder() {
+        return DEFAULT_INSTANCE.toBuilder();
+      }
+      public static Builder newBuilder(org.attribyte.essem.proto3.ReportProtos.EssemReport.Alert prototype) {
+        return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      }
+      @java.lang.Override
+      public Builder toBuilder() {
+        return this == DEFAULT_INSTANCE
+            ? new Builder() : new Builder().mergeFrom(this);
+      }
+
+      @java.lang.Override
+      protected Builder newBuilderForType(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        Builder builder = new Builder(parent);
+        return builder;
+      }
+      /**
+       * Protobuf type {@code org.attribyte.essem.proto3.EssemReport.Alert}
+       */
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+          // @@protoc_insertion_point(builder_implements:org.attribyte.essem.proto3.EssemReport.Alert)
+          org.attribyte.essem.proto3.ReportProtos.EssemReport.AlertOrBuilder {
+        public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+          return org.attribyte.essem.proto3.ReportProtos.internal_static_org_attribyte_essem_proto3_EssemReport_Alert_descriptor;
+        }
+
+        @java.lang.Override
+        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+          return org.attribyte.essem.proto3.ReportProtos.internal_static_org_attribyte_essem_proto3_EssemReport_Alert_fieldAccessorTable
+              .ensureFieldAccessorsInitialized(
+                  org.attribyte.essem.proto3.ReportProtos.EssemReport.Alert.class, org.attribyte.essem.proto3.ReportProtos.EssemReport.Alert.Builder.class);
+        }
+
+        // Construct using org.attribyte.essem.proto3.ReportProtos.EssemReport.Alert.newBuilder()
+        private Builder() {
+          maybeForceBuilderInitialization();
+        }
+
+        private Builder(
+            com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          super(parent);
+          maybeForceBuilderInitialization();
+        }
+        private void maybeForceBuilderInitialization() {
+          if (com.google.protobuf.GeneratedMessageV3
+                  .alwaysUseFieldBuilders) {
+          }
+        }
+        @java.lang.Override
+        public Builder clear() {
+          super.clear();
+          name_ = "";
+
+          severity_ = 0;
+
+          value_ = "";
+
+          return this;
+        }
+
+        @java.lang.Override
+        public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+          return org.attribyte.essem.proto3.ReportProtos.internal_static_org_attribyte_essem_proto3_EssemReport_Alert_descriptor;
+        }
+
+        @java.lang.Override
+        public org.attribyte.essem.proto3.ReportProtos.EssemReport.Alert getDefaultInstanceForType() {
+          return org.attribyte.essem.proto3.ReportProtos.EssemReport.Alert.getDefaultInstance();
+        }
+
+        @java.lang.Override
+        public org.attribyte.essem.proto3.ReportProtos.EssemReport.Alert build() {
+          org.attribyte.essem.proto3.ReportProtos.EssemReport.Alert result = buildPartial();
+          if (!result.isInitialized()) {
+            throw newUninitializedMessageException(result);
+          }
+          return result;
+        }
+
+        @java.lang.Override
+        public org.attribyte.essem.proto3.ReportProtos.EssemReport.Alert buildPartial() {
+          org.attribyte.essem.proto3.ReportProtos.EssemReport.Alert result = new org.attribyte.essem.proto3.ReportProtos.EssemReport.Alert(this);
+          result.name_ = name_;
+          result.severity_ = severity_;
+          result.value_ = value_;
+          onBuilt();
+          return result;
+        }
+
+        @java.lang.Override
+        public Builder clone() {
+          return (Builder) super.clone();
+        }
+        @java.lang.Override
+        public Builder setField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            java.lang.Object value) {
+          return (Builder) super.setField(field, value);
+        }
+        @java.lang.Override
+        public Builder clearField(
+            com.google.protobuf.Descriptors.FieldDescriptor field) {
+          return (Builder) super.clearField(field);
+        }
+        @java.lang.Override
+        public Builder clearOneof(
+            com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+          return (Builder) super.clearOneof(oneof);
+        }
+        @java.lang.Override
+        public Builder setRepeatedField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            int index, java.lang.Object value) {
+          return (Builder) super.setRepeatedField(field, index, value);
+        }
+        @java.lang.Override
+        public Builder addRepeatedField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            java.lang.Object value) {
+          return (Builder) super.addRepeatedField(field, value);
+        }
+        @java.lang.Override
+        public Builder mergeFrom(com.google.protobuf.Message other) {
+          if (other instanceof org.attribyte.essem.proto3.ReportProtos.EssemReport.Alert) {
+            return mergeFrom((org.attribyte.essem.proto3.ReportProtos.EssemReport.Alert)other);
+          } else {
+            super.mergeFrom(other);
+            return this;
+          }
+        }
+
+        public Builder mergeFrom(org.attribyte.essem.proto3.ReportProtos.EssemReport.Alert other) {
+          if (other == org.attribyte.essem.proto3.ReportProtos.EssemReport.Alert.getDefaultInstance()) return this;
+          if (!other.getName().isEmpty()) {
+            name_ = other.name_;
+            onChanged();
+          }
+          if (other.severity_ != 0) {
+            setSeverityValue(other.getSeverityValue());
+          }
+          if (!other.getValue().isEmpty()) {
+            value_ = other.value_;
+            onChanged();
+          }
+          this.mergeUnknownFields(other.unknownFields);
+          onChanged();
+          return this;
+        }
+
+        @java.lang.Override
+        public final boolean isInitialized() {
+          return true;
+        }
+
+        @java.lang.Override
+        public Builder mergeFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          org.attribyte.essem.proto3.ReportProtos.EssemReport.Alert parsedMessage = null;
+          try {
+            parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            parsedMessage = (org.attribyte.essem.proto3.ReportProtos.EssemReport.Alert) e.getUnfinishedMessage();
+            throw e.unwrapIOException();
+          } finally {
+            if (parsedMessage != null) {
+              mergeFrom(parsedMessage);
+            }
+          }
+          return this;
+        }
+
+        private java.lang.Object name_ = "";
+        /**
+         * <code>string name = 1;</code>
+         */
+        public java.lang.String getName() {
+          java.lang.Object ref = name_;
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            name_ = s;
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <code>string name = 1;</code>
+         */
+        public com.google.protobuf.ByteString
+            getNameBytes() {
+          java.lang.Object ref = name_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            name_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <code>string name = 1;</code>
+         */
+        public Builder setName(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  
+          name_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string name = 1;</code>
+         */
+        public Builder clearName() {
+          
+          name_ = getDefaultInstance().getName();
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string name = 1;</code>
+         */
+        public Builder setNameBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+          
+          name_ = value;
+          onChanged();
+          return this;
+        }
+
+        private int severity_ = 0;
+        /**
+         * <code>.org.attribyte.essem.proto3.EssemReport.Alert.Severity severity = 2;</code>
+         */
+        public int getSeverityValue() {
+          return severity_;
+        }
+        /**
+         * <code>.org.attribyte.essem.proto3.EssemReport.Alert.Severity severity = 2;</code>
+         */
+        public Builder setSeverityValue(int value) {
+          severity_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>.org.attribyte.essem.proto3.EssemReport.Alert.Severity severity = 2;</code>
+         */
+        public org.attribyte.essem.proto3.ReportProtos.EssemReport.Alert.Severity getSeverity() {
+          @SuppressWarnings("deprecation")
+          org.attribyte.essem.proto3.ReportProtos.EssemReport.Alert.Severity result = org.attribyte.essem.proto3.ReportProtos.EssemReport.Alert.Severity.valueOf(severity_);
+          return result == null ? org.attribyte.essem.proto3.ReportProtos.EssemReport.Alert.Severity.UNRECOGNIZED : result;
+        }
+        /**
+         * <code>.org.attribyte.essem.proto3.EssemReport.Alert.Severity severity = 2;</code>
+         */
+        public Builder setSeverity(org.attribyte.essem.proto3.ReportProtos.EssemReport.Alert.Severity value) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          
+          severity_ = value.getNumber();
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>.org.attribyte.essem.proto3.EssemReport.Alert.Severity severity = 2;</code>
+         */
+        public Builder clearSeverity() {
+          
+          severity_ = 0;
+          onChanged();
+          return this;
+        }
+
+        private java.lang.Object value_ = "";
+        /**
+         * <code>string value = 3;</code>
+         */
+        public java.lang.String getValue() {
+          java.lang.Object ref = value_;
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            value_ = s;
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <code>string value = 3;</code>
+         */
+        public com.google.protobuf.ByteString
+            getValueBytes() {
+          java.lang.Object ref = value_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            value_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <code>string value = 3;</code>
+         */
+        public Builder setValue(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  
+          value_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string value = 3;</code>
+         */
+        public Builder clearValue() {
+          
+          value_ = getDefaultInstance().getValue();
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string value = 3;</code>
+         */
+        public Builder setValueBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+          
+          value_ = value;
+          onChanged();
+          return this;
+        }
+        @java.lang.Override
+        public final Builder setUnknownFields(
+            final com.google.protobuf.UnknownFieldSet unknownFields) {
+          return super.setUnknownFieldsProto3(unknownFields);
+        }
+
+        @java.lang.Override
+        public final Builder mergeUnknownFields(
+            final com.google.protobuf.UnknownFieldSet unknownFields) {
+          return super.mergeUnknownFields(unknownFields);
+        }
+
+
+        // @@protoc_insertion_point(builder_scope:org.attribyte.essem.proto3.EssemReport.Alert)
+      }
+
+      // @@protoc_insertion_point(class_scope:org.attribyte.essem.proto3.EssemReport.Alert)
+      private static final org.attribyte.essem.proto3.ReportProtos.EssemReport.Alert DEFAULT_INSTANCE;
+      static {
+        DEFAULT_INSTANCE = new org.attribyte.essem.proto3.ReportProtos.EssemReport.Alert();
+      }
+
+      public static org.attribyte.essem.proto3.ReportProtos.EssemReport.Alert getDefaultInstance() {
+        return DEFAULT_INSTANCE;
+      }
+
+      private static final com.google.protobuf.Parser<Alert>
+          PARSER = new com.google.protobuf.AbstractParser<Alert>() {
+        @java.lang.Override
+        public Alert parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return new Alert(input, extensionRegistry);
+        }
+      };
+
+      public static com.google.protobuf.Parser<Alert> parser() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Parser<Alert> getParserForType() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public org.attribyte.essem.proto3.ReportProtos.EssemReport.Alert getDefaultInstanceForType() {
+        return DEFAULT_INSTANCE;
+      }
+
+    }
+
     private int bitField0_;
     public static final int METER_FIELD_NUMBER = 1;
     private java.util.List<org.attribyte.essem.proto3.ReportProtos.EssemReport.Meter> meter_;
@@ -6183,6 +7126,41 @@ public final class ReportProtos {
       }
     }
 
+    public static final int ALERT_FIELD_NUMBER = 15;
+    private java.util.List<org.attribyte.essem.proto3.ReportProtos.EssemReport.Alert> alert_;
+    /**
+     * <code>repeated .org.attribyte.essem.proto3.EssemReport.Alert alert = 15;</code>
+     */
+    public java.util.List<org.attribyte.essem.proto3.ReportProtos.EssemReport.Alert> getAlertList() {
+      return alert_;
+    }
+    /**
+     * <code>repeated .org.attribyte.essem.proto3.EssemReport.Alert alert = 15;</code>
+     */
+    public java.util.List<? extends org.attribyte.essem.proto3.ReportProtos.EssemReport.AlertOrBuilder> 
+        getAlertOrBuilderList() {
+      return alert_;
+    }
+    /**
+     * <code>repeated .org.attribyte.essem.proto3.EssemReport.Alert alert = 15;</code>
+     */
+    public int getAlertCount() {
+      return alert_.size();
+    }
+    /**
+     * <code>repeated .org.attribyte.essem.proto3.EssemReport.Alert alert = 15;</code>
+     */
+    public org.attribyte.essem.proto3.ReportProtos.EssemReport.Alert getAlert(int index) {
+      return alert_.get(index);
+    }
+    /**
+     * <code>repeated .org.attribyte.essem.proto3.EssemReport.Alert alert = 15;</code>
+     */
+    public org.attribyte.essem.proto3.ReportProtos.EssemReport.AlertOrBuilder getAlertOrBuilder(
+        int index) {
+      return alert_.get(index);
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -6238,6 +7216,9 @@ public final class ReportProtos {
       }
       if (!getDescriptionBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 14, description_);
+      }
+      for (int i = 0; i < alert_.size(); i++) {
+        output.writeMessage(15, alert_.get(i));
       }
       unknownFields.writeTo(output);
     }
@@ -6298,6 +7279,10 @@ public final class ReportProtos {
       if (!getDescriptionBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(14, description_);
       }
+      for (int i = 0; i < alert_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(15, alert_.get(i));
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -6340,6 +7325,8 @@ public final class ReportProtos {
           .equals(other.getStatus());
       result = result && getDescription()
           .equals(other.getDescription());
+      result = result && getAlertList()
+          .equals(other.getAlertList());
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -6390,6 +7377,10 @@ public final class ReportProtos {
       hash = (53 * hash) + getStatus().hashCode();
       hash = (37 * hash) + DESCRIPTION_FIELD_NUMBER;
       hash = (53 * hash) + getDescription().hashCode();
+      if (getAlertCount() > 0) {
+        hash = (37 * hash) + ALERT_FIELD_NUMBER;
+        hash = (53 * hash) + getAlertList().hashCode();
+      }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -6523,6 +7514,7 @@ public final class ReportProtos {
           getCounterFieldBuilder();
           getHistogramFieldBuilder();
           getGaugeFieldBuilder();
+          getAlertFieldBuilder();
         }
       }
       @java.lang.Override
@@ -6576,6 +7568,12 @@ public final class ReportProtos {
 
         description_ = "";
 
+        if (alertBuilder_ == null) {
+          alert_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00004000);
+        } else {
+          alertBuilder_.clear();
+        }
         return this;
       }
 
@@ -6658,6 +7656,15 @@ public final class ReportProtos {
         result.role_ = role_;
         result.status_ = status_;
         result.description_ = description_;
+        if (alertBuilder_ == null) {
+          if (((bitField0_ & 0x00004000) == 0x00004000)) {
+            alert_ = java.util.Collections.unmodifiableList(alert_);
+            bitField0_ = (bitField0_ & ~0x00004000);
+          }
+          result.alert_ = alert_;
+        } else {
+          result.alert_ = alertBuilder_.build();
+        }
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -6869,6 +7876,32 @@ public final class ReportProtos {
         if (!other.getDescription().isEmpty()) {
           description_ = other.description_;
           onChanged();
+        }
+        if (alertBuilder_ == null) {
+          if (!other.alert_.isEmpty()) {
+            if (alert_.isEmpty()) {
+              alert_ = other.alert_;
+              bitField0_ = (bitField0_ & ~0x00004000);
+            } else {
+              ensureAlertIsMutable();
+              alert_.addAll(other.alert_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.alert_.isEmpty()) {
+            if (alertBuilder_.isEmpty()) {
+              alertBuilder_.dispose();
+              alertBuilder_ = null;
+              alert_ = other.alert_;
+              bitField0_ = (bitField0_ & ~0x00004000);
+              alertBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getAlertFieldBuilder() : null;
+            } else {
+              alertBuilder_.addAllMessages(other.alert_);
+            }
+          }
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -8629,6 +9662,246 @@ public final class ReportProtos {
         onChanged();
         return this;
       }
+
+      private java.util.List<org.attribyte.essem.proto3.ReportProtos.EssemReport.Alert> alert_ =
+        java.util.Collections.emptyList();
+      private void ensureAlertIsMutable() {
+        if (!((bitField0_ & 0x00004000) == 0x00004000)) {
+          alert_ = new java.util.ArrayList<org.attribyte.essem.proto3.ReportProtos.EssemReport.Alert>(alert_);
+          bitField0_ |= 0x00004000;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          org.attribyte.essem.proto3.ReportProtos.EssemReport.Alert, org.attribyte.essem.proto3.ReportProtos.EssemReport.Alert.Builder, org.attribyte.essem.proto3.ReportProtos.EssemReport.AlertOrBuilder> alertBuilder_;
+
+      /**
+       * <code>repeated .org.attribyte.essem.proto3.EssemReport.Alert alert = 15;</code>
+       */
+      public java.util.List<org.attribyte.essem.proto3.ReportProtos.EssemReport.Alert> getAlertList() {
+        if (alertBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(alert_);
+        } else {
+          return alertBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .org.attribyte.essem.proto3.EssemReport.Alert alert = 15;</code>
+       */
+      public int getAlertCount() {
+        if (alertBuilder_ == null) {
+          return alert_.size();
+        } else {
+          return alertBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .org.attribyte.essem.proto3.EssemReport.Alert alert = 15;</code>
+       */
+      public org.attribyte.essem.proto3.ReportProtos.EssemReport.Alert getAlert(int index) {
+        if (alertBuilder_ == null) {
+          return alert_.get(index);
+        } else {
+          return alertBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .org.attribyte.essem.proto3.EssemReport.Alert alert = 15;</code>
+       */
+      public Builder setAlert(
+          int index, org.attribyte.essem.proto3.ReportProtos.EssemReport.Alert value) {
+        if (alertBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureAlertIsMutable();
+          alert_.set(index, value);
+          onChanged();
+        } else {
+          alertBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.attribyte.essem.proto3.EssemReport.Alert alert = 15;</code>
+       */
+      public Builder setAlert(
+          int index, org.attribyte.essem.proto3.ReportProtos.EssemReport.Alert.Builder builderForValue) {
+        if (alertBuilder_ == null) {
+          ensureAlertIsMutable();
+          alert_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          alertBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.attribyte.essem.proto3.EssemReport.Alert alert = 15;</code>
+       */
+      public Builder addAlert(org.attribyte.essem.proto3.ReportProtos.EssemReport.Alert value) {
+        if (alertBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureAlertIsMutable();
+          alert_.add(value);
+          onChanged();
+        } else {
+          alertBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.attribyte.essem.proto3.EssemReport.Alert alert = 15;</code>
+       */
+      public Builder addAlert(
+          int index, org.attribyte.essem.proto3.ReportProtos.EssemReport.Alert value) {
+        if (alertBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureAlertIsMutable();
+          alert_.add(index, value);
+          onChanged();
+        } else {
+          alertBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.attribyte.essem.proto3.EssemReport.Alert alert = 15;</code>
+       */
+      public Builder addAlert(
+          org.attribyte.essem.proto3.ReportProtos.EssemReport.Alert.Builder builderForValue) {
+        if (alertBuilder_ == null) {
+          ensureAlertIsMutable();
+          alert_.add(builderForValue.build());
+          onChanged();
+        } else {
+          alertBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.attribyte.essem.proto3.EssemReport.Alert alert = 15;</code>
+       */
+      public Builder addAlert(
+          int index, org.attribyte.essem.proto3.ReportProtos.EssemReport.Alert.Builder builderForValue) {
+        if (alertBuilder_ == null) {
+          ensureAlertIsMutable();
+          alert_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          alertBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.attribyte.essem.proto3.EssemReport.Alert alert = 15;</code>
+       */
+      public Builder addAllAlert(
+          java.lang.Iterable<? extends org.attribyte.essem.proto3.ReportProtos.EssemReport.Alert> values) {
+        if (alertBuilder_ == null) {
+          ensureAlertIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, alert_);
+          onChanged();
+        } else {
+          alertBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.attribyte.essem.proto3.EssemReport.Alert alert = 15;</code>
+       */
+      public Builder clearAlert() {
+        if (alertBuilder_ == null) {
+          alert_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00004000);
+          onChanged();
+        } else {
+          alertBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.attribyte.essem.proto3.EssemReport.Alert alert = 15;</code>
+       */
+      public Builder removeAlert(int index) {
+        if (alertBuilder_ == null) {
+          ensureAlertIsMutable();
+          alert_.remove(index);
+          onChanged();
+        } else {
+          alertBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .org.attribyte.essem.proto3.EssemReport.Alert alert = 15;</code>
+       */
+      public org.attribyte.essem.proto3.ReportProtos.EssemReport.Alert.Builder getAlertBuilder(
+          int index) {
+        return getAlertFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .org.attribyte.essem.proto3.EssemReport.Alert alert = 15;</code>
+       */
+      public org.attribyte.essem.proto3.ReportProtos.EssemReport.AlertOrBuilder getAlertOrBuilder(
+          int index) {
+        if (alertBuilder_ == null) {
+          return alert_.get(index);  } else {
+          return alertBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .org.attribyte.essem.proto3.EssemReport.Alert alert = 15;</code>
+       */
+      public java.util.List<? extends org.attribyte.essem.proto3.ReportProtos.EssemReport.AlertOrBuilder> 
+           getAlertOrBuilderList() {
+        if (alertBuilder_ != null) {
+          return alertBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(alert_);
+        }
+      }
+      /**
+       * <code>repeated .org.attribyte.essem.proto3.EssemReport.Alert alert = 15;</code>
+       */
+      public org.attribyte.essem.proto3.ReportProtos.EssemReport.Alert.Builder addAlertBuilder() {
+        return getAlertFieldBuilder().addBuilder(
+            org.attribyte.essem.proto3.ReportProtos.EssemReport.Alert.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .org.attribyte.essem.proto3.EssemReport.Alert alert = 15;</code>
+       */
+      public org.attribyte.essem.proto3.ReportProtos.EssemReport.Alert.Builder addAlertBuilder(
+          int index) {
+        return getAlertFieldBuilder().addBuilder(
+            index, org.attribyte.essem.proto3.ReportProtos.EssemReport.Alert.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .org.attribyte.essem.proto3.EssemReport.Alert alert = 15;</code>
+       */
+      public java.util.List<org.attribyte.essem.proto3.ReportProtos.EssemReport.Alert.Builder> 
+           getAlertBuilderList() {
+        return getAlertFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          org.attribyte.essem.proto3.ReportProtos.EssemReport.Alert, org.attribyte.essem.proto3.ReportProtos.EssemReport.Alert.Builder, org.attribyte.essem.proto3.ReportProtos.EssemReport.AlertOrBuilder> 
+          getAlertFieldBuilder() {
+        if (alertBuilder_ == null) {
+          alertBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              org.attribyte.essem.proto3.ReportProtos.EssemReport.Alert, org.attribyte.essem.proto3.ReportProtos.EssemReport.Alert.Builder, org.attribyte.essem.proto3.ReportProtos.EssemReport.AlertOrBuilder>(
+                  alert_,
+                  ((bitField0_ & 0x00004000) == 0x00004000),
+                  getParentForChildren(),
+                  isClean());
+          alert_ = null;
+        }
+        return alertBuilder_;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -8712,6 +9985,11 @@ public final class ReportProtos {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_org_attribyte_essem_proto3_EssemReport_Timer_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_org_attribyte_essem_proto3_EssemReport_Alert_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_org_attribyte_essem_proto3_EssemReport_Alert_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -8722,7 +10000,7 @@ public final class ReportProtos {
   static {
     java.lang.String[] descriptorData = {
       "\n\021EssemReport.proto\022\032org.attribyte.essem" +
-      ".proto3\"\345\013\n\013EssemReport\022<\n\005meter\030\001 \003(\0132-" +
+      ".proto3\"\327\r\n\013EssemReport\022<\n\005meter\030\001 \003(\0132-" +
       ".org.attribyte.essem.proto3.EssemReport." +
       "Meter\022<\n\005timer\030\002 \003(\0132-.org.attribyte.ess" +
       "em.proto3.EssemReport.Timer\022@\n\007counter\030\003" +
@@ -8737,30 +10015,36 @@ public final class ReportProtos {
       "to3.EssemReport.TimeUnit\022\023\n\013application\030" +
       "\t \001(\t\022\014\n\004host\030\n \001(\t\022\020\n\010instance\030\013 \001(\t\022\014\n" +
       "\004role\030\014 \001(\t\022\016\n\006status\030\r \001(\t\022\023\n\013descripti" +
-      "on\030\016 \001(\t\0325\n\005Gauge\022\014\n\004name\030\001 \001(\t\022\r\n\005value" +
-      "\030\002 \001(\001\022\017\n\007comment\030\003 \001(\t\032&\n\007Counter\022\014\n\004na" +
-      "me\030\001 \001(\t\022\r\n\005count\030\002 \001(\004\032\200\001\n\005Meter\022\014\n\004nam" +
-      "e\030\001 \001(\t\022\025\n\roneMinuteRate\030\002 \001(\001\022\026\n\016fiveMi" +
-      "nuteRate\030\003 \001(\001\022\031\n\021fifteenMinuteRate\030\004 \001(" +
-      "\001\022\020\n\010meanRate\030\005 \001(\001\022\r\n\005count\030\006 \001(\004\032\362\001\n\tH" +
-      "istogram\022\014\n\004name\030\001 \001(\t\022\r\n\005count\030\002 \001(\004\022\013\n" +
-      "\003max\030\003 \001(\001\022\014\n\004mean\030\004 \001(\001\022\013\n\003min\030\005 \001(\001\022\013\n" +
-      "\003std\030\006 \001(\001\022\016\n\006median\030\007 \001(\001\022\024\n\014percentile" +
-      "75\030\010 \001(\001\022\024\n\014percentile95\030\t \001(\001\022\024\n\014percen" +
-      "tile98\030\n \001(\001\022\024\n\014percentile99\030\013 \001(\001\022\025\n\rpe" +
-      "rcentile999\030\014 \001(\001\022\024\n\014hdrHistogram\030\r \001(\014\032" +
-      "\312\002\n\005Timer\022\014\n\004name\030\001 \001(\t\022\025\n\roneMinuteRate" +
-      "\030\002 \001(\001\022\026\n\016fiveMinuteRate\030\003 \001(\001\022\031\n\021fiftee" +
-      "nMinuteRate\030\004 \001(\001\022\020\n\010meanRate\030\005 \001(\001\022\r\n\005c" +
-      "ount\030\006 \001(\004\022\013\n\003max\030\007 \001(\001\022\014\n\004mean\030\010 \001(\001\022\013\n" +
-      "\003min\030\t \001(\001\022\013\n\003std\030\n \001(\001\022\016\n\006median\030\013 \001(\001\022" +
-      "\024\n\014percentile75\030\014 \001(\001\022\024\n\014percentile95\030\r " +
-      "\001(\001\022\024\n\014percentile98\030\016 \001(\001\022\024\n\014percentile9" +
-      "9\030\017 \001(\001\022\025\n\rpercentile999\030\020 \001(\001\022\024\n\014hdrHis" +
-      "togram\030\021 \001(\014\"i\n\010TimeUnit\022\013\n\007UNKNOWN\020\000\022\t\n" +
-      "\005NANOS\020\001\022\n\n\006MICROS\020\002\022\n\n\006MILLIS\020\003\022\013\n\007SECO" +
-      "NDS\020\004\022\013\n\007MINUTES\020\005\022\t\n\005HOURS\020\006\022\010\n\004DAYS\020\007B" +
-      "\016B\014ReportProtosb\006proto3"
+      "on\030\016 \001(\t\022<\n\005alert\030\017 \003(\0132-.org.attribyte." +
+      "essem.proto3.EssemReport.Alert\0325\n\005Gauge\022" +
+      "\014\n\004name\030\001 \001(\t\022\r\n\005value\030\002 \001(\001\022\017\n\007comment\030" +
+      "\003 \001(\t\032&\n\007Counter\022\014\n\004name\030\001 \001(\t\022\r\n\005count\030" +
+      "\002 \001(\004\032\200\001\n\005Meter\022\014\n\004name\030\001 \001(\t\022\025\n\roneMinu" +
+      "teRate\030\002 \001(\001\022\026\n\016fiveMinuteRate\030\003 \001(\001\022\031\n\021" +
+      "fifteenMinuteRate\030\004 \001(\001\022\020\n\010meanRate\030\005 \001(" +
+      "\001\022\r\n\005count\030\006 \001(\004\032\362\001\n\tHistogram\022\014\n\004name\030\001" +
+      " \001(\t\022\r\n\005count\030\002 \001(\004\022\013\n\003max\030\003 \001(\001\022\014\n\004mean" +
+      "\030\004 \001(\001\022\013\n\003min\030\005 \001(\001\022\013\n\003std\030\006 \001(\001\022\016\n\006medi" +
+      "an\030\007 \001(\001\022\024\n\014percentile75\030\010 \001(\001\022\024\n\014percen" +
+      "tile95\030\t \001(\001\022\024\n\014percentile98\030\n \001(\001\022\024\n\014pe" +
+      "rcentile99\030\013 \001(\001\022\025\n\rpercentile999\030\014 \001(\001\022" +
+      "\024\n\014hdrHistogram\030\r \001(\014\032\312\002\n\005Timer\022\014\n\004name\030" +
+      "\001 \001(\t\022\025\n\roneMinuteRate\030\002 \001(\001\022\026\n\016fiveMinu" +
+      "teRate\030\003 \001(\001\022\031\n\021fifteenMinuteRate\030\004 \001(\001\022" +
+      "\020\n\010meanRate\030\005 \001(\001\022\r\n\005count\030\006 \001(\004\022\013\n\003max\030" +
+      "\007 \001(\001\022\014\n\004mean\030\010 \001(\001\022\013\n\003min\030\t \001(\001\022\013\n\003std\030" +
+      "\n \001(\001\022\016\n\006median\030\013 \001(\001\022\024\n\014percentile75\030\014 " +
+      "\001(\001\022\024\n\014percentile95\030\r \001(\001\022\024\n\014percentile9" +
+      "8\030\016 \001(\001\022\024\n\014percentile99\030\017 \001(\001\022\025\n\rpercent" +
+      "ile999\030\020 \001(\001\022\024\n\014hdrHistogram\030\021 \001(\014\032\261\001\n\005A" +
+      "lert\022\014\n\004name\030\001 \001(\t\022H\n\010severity\030\002 \001(\01626.o" +
+      "rg.attribyte.essem.proto3.EssemReport.Al" +
+      "ert.Severity\022\r\n\005value\030\003 \001(\t\"A\n\010Severity\022" +
+      "\013\n\007UNKNOWN\020\000\022\010\n\004INFO\020\001\022\010\n\004WARN\020\002\022\t\n\005ERRO" +
+      "R\020\003\022\t\n\005FATAL\020\004\"i\n\010TimeUnit\022\013\n\007UNKNOWN\020\000\022" +
+      "\t\n\005NANOS\020\001\022\n\n\006MICROS\020\002\022\n\n\006MILLIS\020\003\022\013\n\007SE" +
+      "CONDS\020\004\022\013\n\007MINUTES\020\005\022\t\n\005HOURS\020\006\022\010\n\004DAYS\020" +
+      "\007B\016B\014ReportProtosb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -8779,7 +10063,7 @@ public final class ReportProtos {
     internal_static_org_attribyte_essem_proto3_EssemReport_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_org_attribyte_essem_proto3_EssemReport_descriptor,
-        new java.lang.String[] { "Meter", "Timer", "Counter", "Histogram", "Gauge", "Timestamp", "RateUnit", "DurationUnit", "Application", "Host", "Instance", "Role", "Status", "Description", });
+        new java.lang.String[] { "Meter", "Timer", "Counter", "Histogram", "Gauge", "Timestamp", "RateUnit", "DurationUnit", "Application", "Host", "Instance", "Role", "Status", "Description", "Alert", });
     internal_static_org_attribyte_essem_proto3_EssemReport_Gauge_descriptor =
       internal_static_org_attribyte_essem_proto3_EssemReport_descriptor.getNestedTypes().get(0);
     internal_static_org_attribyte_essem_proto3_EssemReport_Gauge_fieldAccessorTable = new
@@ -8810,6 +10094,12 @@ public final class ReportProtos {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_org_attribyte_essem_proto3_EssemReport_Timer_descriptor,
         new java.lang.String[] { "Name", "OneMinuteRate", "FiveMinuteRate", "FifteenMinuteRate", "MeanRate", "Count", "Max", "Mean", "Min", "Std", "Median", "Percentile75", "Percentile95", "Percentile98", "Percentile99", "Percentile999", "HdrHistogram", });
+    internal_static_org_attribyte_essem_proto3_EssemReport_Alert_descriptor =
+      internal_static_org_attribyte_essem_proto3_EssemReport_descriptor.getNestedTypes().get(5);
+    internal_static_org_attribyte_essem_proto3_EssemReport_Alert_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_org_attribyte_essem_proto3_EssemReport_Alert_descriptor,
+        new java.lang.String[] { "Name", "Severity", "Value", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

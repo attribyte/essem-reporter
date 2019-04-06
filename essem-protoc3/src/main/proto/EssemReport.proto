@@ -89,6 +89,21 @@ message EssemReport {
      bytes hdrHistogram = 17;
    }
 
+   message Alert {
+
+      enum Severity {
+        UNKNOWN = 0;
+        INFO = 1;
+        WARN = 2;
+        ERROR = 3;
+        FATAL = 4;
+      }
+
+     string name = 1;
+     Severity severity = 2;
+     string value = 3;
+   }
+
    repeated Meter meter = 1;
    repeated Timer timer = 2;
    repeated Counter counter = 3;
@@ -103,4 +118,5 @@ message EssemReport {
    string role = 12;
    string status = 13;
    string description = 14;
+   repeated Alert alert = 15;
 }
