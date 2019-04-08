@@ -24,7 +24,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Properties;
 
-class Proto3Builder extends Builder {
+public class Proto3Builder extends Builder {
 
    /**
     * Creates a builder.

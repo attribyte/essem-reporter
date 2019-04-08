@@ -19,6 +19,7 @@
 package org.attribyte.essem.reporter;
 
 import com.google.common.base.MoreObjects;
+import com.google.common.base.Strings;
 
 /**
  * A reported alert.
@@ -28,7 +29,7 @@ public class Alert {
    /**
     * Alert severity.
     */
-   enum Severity {
+   public enum Severity {
 
       /**
        * Unknown.
@@ -53,7 +54,29 @@ public class Alert {
       /**
        * Fatal error.
        */
-      FATAL
+      FATAL;
+
+      /**
+       * Convert a string to a {@code Severity}.
+       * @param str The string.
+       * @return The severity.
+       */
+      public static final Severity fromString(final String str) {
+         switch(Strings.nullToEmpty(str).trim().toLowerCase()) {
+            case "info":
+               return INFO;
+            case "warn":
+            case "warning":
+               return WARN;
+            case "error":
+            case "err":
+               return ERROR;
+            case "fatal":
+               return FATAL;
+            default:
+               return UNKNOWN;
+         }
+      }
    }
 
    /**
