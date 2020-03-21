@@ -21,6 +21,11 @@
     <description>
         Essem metrics reporting and custom metrics
     </description>
+    <scm>
+        <connection>scm:git:git@github.com:attribyte/essem-reporter.git</connection>
+        <developerConnection>scm:git:git@github.com:attribyte/essem-reporter.git</developerConnection>
+        <url>git@github.com:attribyte/essem-reporter.git</url>
+    </scm>
     <modules>
         <module>essem-metrics</module>
         <module>essem-protoc2</module>
